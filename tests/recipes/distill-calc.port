@@ -1,0 +1,13 @@
+PORT_NAME="distill-calc"
+PORT_VERSION="2.1.0"
+PORT_RELEASE="1"
+PORT_DESC="Distill Linux High-Precision Calculator"
+PORT_URL="file:///tmp/calc_src_repo"
+PORT_COMMIT="ab573d470f8bda0246cd99d2f3790c2bd69b3406"
+BUILD_SYSTEM="samu"
+BUILD_DEPS="samurai"
+RUN_DEPS="musl"
+
+BUILD:
+    samu -v
+    DESTDIR= samu install

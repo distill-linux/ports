@@ -1,0 +1,64 @@
+name: Build Ports & Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'recipes/**'
+      - 'src/**'
+      - 'tools/**'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Ports Repository
+        uses: actions/checkout@v4
+
+      - name: Build drop & sink, Build Recipes, and Generate Catalog
+        run: |
+          docker run --rm -v ${{ github.workspace }}:/work -w /work ghcr.io/void-linux/void-musl-full:latest sh -c '
+            xbps-install -Syu && \
+            xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel base-devel git curl
+            
+            # Build drop and sink with samurai
+            samu -v
+            
+            # Build recipes into packages directory
+            mkdir -p packages
+            for recipe in recipes/*.port; do
+              [ -f "$recipe" ] || continue
+              echo "==> Building $recipe..."
+              ./src/sink/sink --out packages make "$recipe"
+            done
+            
+            # Generate index.tsv and index.html
+            chmod +x tools/gen-repo.sh
+            ./tools/gen-repo.sh packages
+          '
+
+      - name: Deploy to distill-linux.github.io
+        env:
+          GH_TOKEN: ${{ secrets.REPO_DISPATCH_PAT || secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.name "Distill Linux CI"
+          git config --global user.email "ci@distilllinux.org"
+
+          git clone https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git /tmp/pages-repo || {
+            echo "Clone via token, creating repo locally if needed"
+            mkdir -p /tmp/pages-repo
+            cd /tmp/pages-repo
+            git init -b main
+            git remote add origin https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git
+          }
+          
+          # Copy artifacts
+          cp -r packages/* /tmp/pages-repo/
+          
+          cd /tmp/pages-repo
+          git add -A
+          git diff --staged --quiet || {
+            git commit -m "Automated build & catalog update via GitHub Actions"
+            git push origin main
+          }

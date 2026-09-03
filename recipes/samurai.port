@@ -1,0 +1,13 @@
+PORT_NAME="samurai"
+PORT_VERSION="1.2"
+PORT_RELEASE="1"
+PORT_DESC="Ninja-compatible build tool written in C"
+PORT_URL="https://github.com/michaelforney/samurai.git"
+PORT_COMMIT="1.2"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install
