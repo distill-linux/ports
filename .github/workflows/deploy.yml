@@ -1,4 +1,4 @@
-name: Build Ports & Deploy to GitHub Pages
+name: Update Ports Catalog & Deploy to Website
 
 on:
   push:
@@ -9,57 +9,35 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  update-catalog:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Ports Repository
         uses: actions/checkout@v4
 
-      - name: Build Recipes via Sink and Generate Catalog
-        run: |
-          docker run --rm -v ${{ github.workspace }}:/work -w /work ghcr.io/void-linux/void-musl-full:latest sh -c '
-            xbps-install -Syu && \
-            xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel clang lld llvm git curl python3
-            
-            # Build sink tool from official repo
-            git clone https://github.com/distill-linux/sink.git /tmp/sink-tool
-            cd /tmp/sink-tool && samu && cd /work
-            
-            # Build all port recipes into packages directory
-            mkdir -p packages
-            for recipe in recipes/*.port; do
-              [ -f "$recipe" ] || continue
-              echo "==> Building $recipe..."
-              /tmp/sink-tool/sink --out packages make "$recipe"
-            done
-            
-            # Generate index.tsv and index.html
-            chmod +x tools/gen-repo.sh
-            ./tools/gen-repo.sh packages
-          '
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
 
-      - name: Deploy to distill-linux.github.io
+      - name: Clone Website Repository
         env:
-          GH_TOKEN: ${{ secrets.REPO_DISPATCH_PAT || secrets.GITHUB_TOKEN }}
+          PAT: ${{ secrets.REPO_DISPATCH_PAT }}
         run: |
-          git config --global user.name "Distill Linux CI"
-          git config --global user.email "ci@distilllinux.org"
+          git config --global user.name "Distill Linux Bot"
+          git config --global user.email "bot@distilllinux.org"
+          git clone "https://x-access-token:${PAT}@github.com/distill-linux/distill-linux.github.io.git" /tmp/pages-repo
 
-          git clone https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git /tmp/pages-repo || {
-            echo "Clone failed, creating repo locally"
-            mkdir -p /tmp/pages-repo
-            cd /tmp/pages-repo
-            git init -b main
-            git remote add origin https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git
-          }
-          
-          # Copy packages and catalog to static/ports
-          mkdir -p /tmp/pages-repo/static/ports
-          cp -r packages/* /tmp/pages-repo/static/ports/
-          
+      - name: Generate Catalog & Update Website Ports
+        run: |
+          chmod +x tools/gen-repo.sh
+          ./tools/gen-repo.sh dist-packages recipes /tmp/pages-repo
+
+      - name: Commit & Push to Website Repository
+        run: |
           cd /tmp/pages-repo
           git add -A
           git diff-index --quiet HEAD || {
-            git commit -m "Automated update of official binary packages and index"
+            git commit -m "Automated catalog update from ports repository"
             git push origin main
           }
