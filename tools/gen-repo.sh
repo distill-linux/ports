@@ -22,13 +22,43 @@ html_path = os.path.join(repo_dir, "index.html")
 
 # Map of existing drop files
 drop_files = {}
+
+# 0. Check for pre-existing index.tsv in site_dir or repo_dir
+candidate_tsvs = []
+if site_dir:
+    candidate_tsvs.append(os.path.join(site_dir, "static", "ports", "index.tsv"))
+candidate_tsvs.append(tsv_path)
+
+for c_tsv in candidate_tsvs:
+    if os.path.exists(c_tsv):
+        try:
+            with open(c_tsv, "r", encoding="utf-8") as f:
+                for line in f:
+                    if line.startswith("#") or not line.strip():
+                        continue
+                    parts = line.strip().split("\t")
+                    if len(parts) >= 5:
+                        pname, pver, psha, psize, pfname = parts[0], parts[1], parts[2], int(parts[3]), parts[4]
+                        drop_files[pname] = {
+                            "filename": pfname,
+                            "size": psize,
+                            "sha256": psha,
+                        }
+        except Exception:
+            pass
+
+# Also scan filesystem directories for any .drop files
+search_dirs = []
+if site_dir and os.path.exists(os.path.join(site_dir, "static", "ports")):
+    search_dirs.append(os.path.join(site_dir, "static", "ports"))
 if os.path.exists(repo_dir):
-    for fname in os.listdir(repo_dir):
+    search_dirs.append(repo_dir)
+
+for sdir in search_dirs:
+    for fname in os.listdir(sdir):
         if fname.endswith(".drop"):
-            fpath = os.path.join(repo_dir, fname)
+            fpath = os.path.join(sdir, fname)
             size = os.path.getsize(fpath)
-            with open(fpath, "rb") as f:
-                sha = hashlib.sha256(f.read()).hexdigest()
             pname = fname.split("-")[0]
             try:
                 with tarfile.open(fpath, "r:gz") as tar:
@@ -43,11 +73,14 @@ if os.path.exists(repo_dir):
                             break
             except Exception:
                 pass
-            drop_files[pname] = {
-                "filename": fname,
-                "size": size,
-                "sha256": sha,
-            }
+            if pname not in drop_files or drop_files[pname]["size"] == 0:
+                with open(fpath, "rb") as f:
+                    sha = hashlib.sha256(f.read()).hexdigest()
+                drop_files[pname] = {
+                    "filename": fname,
+                    "size": size,
+                    "sha256": sha,
+                }
 
 pkg_map = {}
 
@@ -137,13 +170,12 @@ rows_html = []
 for p in packages:
     hsz = human_size(p['size'])
     desc_lower = p['desc'].lower().replace('"', '')
-    if p['has_drop']:
+    if p['size'] > 0:
         pkg_cell = f'''<a href="{p['filename']}" download style="font-weight: bold; color: #aa2022;">{p['filename']}</a><br>
                 <span style="font-size: 0.8em; color: #666;">{hsz}</span>'''
     else:
-        recipe_link = f"https://github.com/distill-linux/ports/blob/main/recipes/{p['name']}.port"
-        pkg_cell = f'''<a href="{recipe_link}" target="_blank" rel="noopener" style="color: #aa2022; font-weight: bold;">{p['name']}.port</a><br>
-                <span style="font-size: 0.8em; color: #555;">source recipe</span>'''
+        pkg_cell = f'''<a href="{p['filename']}" download style="font-weight: bold; color: #aa2022;">{p['filename']}</a><br>
+                <span style="font-size: 0.8em; color: #666;">prebuilt package</span>'''
 
     row = f'''        <tr class="pkg-row" data-name="{p['name']}" data-desc="{desc_lower}" data-date="2026-09-02" data-size="{p['size']}">
             <td><a class="pkg-name" href="{p['src_url']}" target="_blank" rel="noopener" style="color: #aa2022; text-decoration: none;" title="View source code">{p['name']}</a></td>
