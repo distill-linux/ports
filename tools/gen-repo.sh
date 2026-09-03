@@ -21,25 +21,38 @@ cat << 'HTMLEOF' > "$INDEX_HTML"
   <title>Packages - Distill Linux</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
   <style>
+    body {
+        margin: 1.5em 2.5em;
+        font-family: sans-serif;
+        background: #b4bbed;
+        color: #101426;
+    }
     .pkg-search-box {
         background: rgba(255, 255, 255, 0.45);
         border: 1px solid rgba(0, 0, 0, 0.22);
         border-radius: 4px;
-        padding: 0.8em 1.2em;
         margin: 1em 0 1.5em 0;
+        overflow: hidden;
     }
-    .pkg-search-box legend {
+    .pkg-search-title {
+        background: rgba(44, 54, 99, 0.12);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.18);
+        padding: 0.5em 1em;
         font-weight: bold;
         color: #0c142e;
-        padding: 0 0.4em;
         font-size: 1.05em;
     }
     .pkg-search-form {
+        padding: 0.8em 1em;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: 0.8em 1.2em;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 1em;
         align-items: end;
-        margin-top: 0.4em;
+    }
+    @media (max-width: 750px) {
+        .pkg-search-form {
+            grid-template-columns: 1fr;
+        }
     }
     .pkg-form-group {
         display: flex;
@@ -52,11 +65,13 @@ cat << 'HTMLEOF' > "$INDEX_HTML"
         color: #2c3663;
     }
     .pkg-form-group input, .pkg-form-group select {
-        padding: 0.4em 0.6em;
+        padding: 0.45em 0.6em;
         border: 1px solid rgba(0, 0, 0, 0.25);
         border-radius: 3px;
         background: #ffffff;
         font-size: 0.9em;
+        box-sizing: border-box;
+        width: 100%;
     }
     .pkg-stats {
         font-size: 0.9em;
@@ -74,13 +89,14 @@ cat << 'HTMLEOF' > "$INDEX_HTML"
     .pkg-table th {
         background: rgba(44, 54, 99, 0.12);
         border: 1px solid rgba(0, 0, 0, 0.18);
-        padding: 0.55em 0.8em;
+        padding: 0.6em 0.8em;
         text-align: left;
         color: #0c142e;
+        white-space: nowrap;
     }
     .pkg-table td {
         border: 1px solid rgba(0, 0, 0, 0.18);
-        padding: 0.55em 0.8em;
+        padding: 0.6em 0.8em;
         vertical-align: top;
     }
     .pkg-table tr:hover {
@@ -125,14 +141,14 @@ cat << 'HTMLEOF' > "$INDEX_HTML"
     }
   </style>
 </head>
-<body style="font-family: sans-serif; margin: 1.5em 2.5em; background: #b4bbed; color: #101426;">
+<body>
   <span class="catalog-link">Raw catalog: <a href="index.tsv" style="color: #aa2022;">index.tsv</a></span>
   <h1 style="border-bottom: 1px solid rgba(0,0,0,0.22); padding-bottom: 0.4em;"><a href="/" style="color: #101426; text-decoration: none;">distill</a> / packages</h1>
 
-  <fieldset class="pkg-search-box">
-      <legend>Search Criteria</legend>
+  <div class="pkg-search-box">
+      <div class="pkg-search-title">Search Criteria</div>
       <div class="pkg-search-form">
-          <div class="pkg-form-group" style="grid-column: span 2;">
+          <div class="pkg-form-group">
               <label for="pkg-keywords">Keywords</label>
               <input type="text" id="pkg-keywords" placeholder="Search by name or description..." oninput="filterPackages()">
           </div>
@@ -154,7 +170,7 @@ cat << 'HTMLEOF' > "$INDEX_HTML"
               </select>
           </div>
       </div>
-  </fieldset>
+  </div>
 
   <div class="pkg-stats" id="pkg-stats">
 HTMLEOF
@@ -230,8 +246,8 @@ cat << HTMLEOF2 >> "$INDEX_HTML"
   <table class="pkg-table" id="pkg-table">
       <thead>
           <tr>
-              <th style="width: 20%;">Name</th>
-              <th style="width: 12%;">Version</th>
+              <th style="width: 18%;">Name</th>
+              <th style="width: 10%;">Version</th>
               <th>Description</th>
               <th style="width: 14%;">Maintainer</th>
               <th style="width: 14%;">Last Updated</th>
