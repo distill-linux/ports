@@ -1,0 +1,13 @@
+PORT_NAME="drop"
+PORT_VERSION="0.1.0"
+PORT_RELEASE="1"
+PORT_DESC="Native minimal binary package manager for Distill Linux"
+PORT_URL="https://github.com/distill-linux/drop.git"
+PORT_COMMIT="main"
+BUILD_SYSTEM="samu"
+BUILD_DEPS="samurai"
+RUN_DEPS=""
+
+BUILD:
+samu
+install -D -m 755 drop "$PKG_FAKEROOT/usr/bin/drop"
