@@ -190,6 +190,7 @@ for f in "$REPO_DIR"/*.drop; do
     REL=$(echo "$PORT_TEXT" | grep -E "^(PORT_)?RELEASE=" | head -n 1 | cut -d'=' -f2 | tr -d '"'\'' ')
     DESC=$(echo "$PORT_TEXT" | grep -E "^(PORT_)?DESC=" | head -n 1 | cut -d'=' -f2- | tr -d '"'\'')
     DEPS=$(echo "$PORT_TEXT" | grep -E "^(RUN_DEPS|DEPENDS)=" | head -n 1 | cut -d'=' -f2 | tr -d '"'\'' ')
+    URL=$(echo "$PORT_TEXT" | grep -E "^(PORT_)?URL=" | head -n 1 | cut -d'=' -f2- | tr -d '"'\'' ')
 
     if [ -z "$NAME" ]; then
         NAME=$(echo "$FILENAME" | sed 's/-[0-9].*//')
@@ -202,6 +203,14 @@ for f in "$REPO_DIR"/*.drop; do
     fi
     if [ -z "$DESC" ]; then
         DESC="No description available."
+    fi
+
+    # Determine source code link
+    SRC_URL="$URL"
+    if [ -z "$SRC_URL" ]; then
+        SRC_URL="https://github.com/distill-linux/ports/blob/main/recipes/${NAME}.port"
+    elif echo "$SRC_URL" | grep -q "^http.*\.git$"; then
+        SRC_URL=$(echo "$SRC_URL" | sed 's/\.git$//')
     fi
 
     # Append to index.tsv
@@ -218,7 +227,7 @@ for f in "$REPO_DIR"/*.drop; do
 
     ROWS_HTML="$ROWS_HTML
         <tr class=\"pkg-row\" data-name=\"$NAME\" data-desc=\"$(echo "$DESC" | tr '[:upper:]' '[:lower:]')\" data-date=\"2026-09-02\" data-size=\"$SIZE\">
-            <td><a class=\"pkg-name\" href=\"$FILENAME\" style=\"color: #aa2022; text-decoration: none;\">$NAME</a></td>
+            <td><a class=\"pkg-name\" href=\"$SRC_URL\" target=\"_blank\" rel=\"noopener\" style=\"color: #aa2022; text-decoration: none;\" title=\"View source code\">$NAME</a></td>
             <td><span class=\"pkg-tag\">$VER-$REL</span></td>
             <td>
                 <div class=\"pkg-desc\">$DESC</div>
@@ -227,7 +236,7 @@ for f in "$REPO_DIR"/*.drop; do
             <td class=\"pkg-meta\">distill-core</td>
             <td class=\"pkg-meta\">2026-09-02 (UTC)</td>
             <td>
-                <a href=\"$FILENAME\" style=\"color: #aa2022;\">$FILENAME</a><br>
+                <a href=\"$FILENAME\" download style=\"color: #aa2022; font-weight: bold;\">$FILENAME</a><br>
                 <span style=\"font-size: 0.8em; color: #666;\">$HUMAN_SIZE</span>
             </td>
         </tr>"
