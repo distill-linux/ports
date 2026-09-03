@@ -1,4 +1,4 @@
 FROM ghcr.io/void-linux/void-musl-full:latest
 RUN xbps-install -Syu && \
-    xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel base-devel git curl
+    xbps-install -y samurai bmake clang lld llvm libgit2-devel libcurl-devel zlib-devel git curl
 WORKDIR /build

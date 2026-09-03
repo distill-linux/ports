@@ -26,9 +26,9 @@ CCODE
 
 cat << 'NINJA' > "$SRC_REPO_DIR/build.ninja"
 rule cc
-  command = gcc -Os -Wall -c $in -o $out
+  command = clang -Os -Wall -c $in -o $out
 rule link
-  command = gcc $in -o $out
+  command = clang $in -o $out
 rule install
   command = install -D -m 755 distill-calc $$PKG_FAKEROOT/usr/bin/distill-calc && ln -s distill-calc $$PKG_FAKEROOT/usr/bin/calc-symlink
 

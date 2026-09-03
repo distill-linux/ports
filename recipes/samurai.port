@@ -9,5 +9,5 @@ BUILD_DEPS=""
 RUN_DEPS=""
 
 BUILD:
-make PREFIX=/usr
+make CC=clang PREFIX=/usr
 make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

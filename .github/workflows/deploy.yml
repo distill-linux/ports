@@ -20,7 +20,7 @@ jobs:
         run: |
           docker run --rm -v ${{ github.workspace }}:/work -w /work ghcr.io/void-linux/void-musl-full:latest sh -c '
             xbps-install -Syu && \
-            xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel base-devel git curl
+            xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel clang lld llvm git curl
             
             # Build drop and sink with samurai
             samu -v

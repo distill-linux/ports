@@ -1,6 +1,6 @@
 .POSIX:
 
-CC ?= gcc
+CC ?= clang
 CFLAGS ?= -Os -fno-asynchronous-unwind-tables -ffunction-sections -fdata-sections -Wall -Wextra -pedantic -Werror -std=c99 -I../common
 LDFLAGS ?= -Wl,--gc-sections
 LDADD ?= -lz

@@ -125,7 +125,6 @@ int drop_db_list(const char *root) {
     printf("%-20s %-12s %12s\n", "--------------------", "------------", "------------");
 
     struct dirent *ent;
-    size_t count = 0;
     while ((ent = readdir(d)) != NULL) {
         if (ent->d_name[0] == '.') continue;
         distill_port p;
@@ -138,7 +137,6 @@ int drop_db_list(const char *root) {
             }
             printf("%-20s %-12s %12s\n", p.name, p.version, sz_buf);
             distill_port_free(&p);
-            count++;
         }
     }
     closedir(d);
