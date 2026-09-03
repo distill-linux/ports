@@ -411,9 +411,11 @@ with open(html_path, "w", encoding="utf-8") as f:
 if site_dir and os.path.exists(site_dir):
     static_ports_dir = os.path.join(site_dir, "static", "ports")
     os.makedirs(static_ports_dir, exist_ok=True)
-    # Copy all drop files, index.tsv, index.html to static/ports
+    # Copy all drop files and index.tsv to static/ports (skip index.html so Hugo template is used)
     import shutil
     for fname in os.listdir(repo_dir):
+        if fname == "index.html":
+            continue
         src = os.path.join(repo_dir, fname)
         dst = os.path.join(static_ports_dir, fname)
         if os.path.isfile(src):
@@ -421,7 +423,7 @@ if site_dir and os.path.exists(site_dir):
     
     # Generate content/ports/_index.md for Hugo
     md_content = f'''---
-title: "Ports"
+title: "ports"
 ---
 
 <style>
@@ -553,12 +555,11 @@ article {{
 .catalog-link {{
     float: right;
     font-size: 0.85em;
-    margin-top: 0.5em;
+    margin-top: -2.2em;
 }}
 </style>
 
 <span class="catalog-link">Raw catalog: <a href="index.tsv" style="color: #aa2022;">index.tsv</a></span>
-<h1>packages</h1>
 
 <div class="pkg-search-box">
     <div class="pkg-search-title">Search Criteria</div>
