@@ -108,6 +108,19 @@ html_content = f'''<!DOCTYPE html>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Packages - Distill Linux</title>
   <link rel="stylesheet" href="/style.css" type="text/css">
+  <script>
+    (function() {
+        if (localStorage.getItem('distill-inverted') === 'true') {
+            document.documentElement.classList.add('inverted');
+        }
+    })();
+    function toggleInvert() {
+        var isInv = document.documentElement.classList.toggle('inverted');
+        try {
+            localStorage.setItem('distill-inverted', isInv ? 'true' : 'false');
+        } catch (e) {}
+    }
+  </script>
   <style>
     body {{
         margin: 1.5em 2.5em;
@@ -236,7 +249,7 @@ html_content = f'''<!DOCTYPE html>
   </style>
 </head>
 <body>
-  <span class="catalog-link">Raw catalog: <a href="index.tsv" style="color: #aa2022;">index.tsv</a></span>
+  <span class="catalog-link">Raw catalog: <a href="index.tsv" style="color: #aa2022;">index.tsv</a> | <a href="javascript:void(0)" onclick="toggleInvert()" style="color: #aa2022;">invert</a></span>
   <h1 style="border-bottom: 1px solid rgba(0,0,0,0.22); padding-bottom: 0.4em;"><a href="/" style="color: #101426; text-decoration: none;">distill</a> / packages</h1>
 
   <div class="pkg-search-box">
