@@ -214,13 +214,19 @@ html_content = f'''<!DOCTYPE html>
     }}
     .pkg-cmd {{
         font-family: monospace;
-        font-size: 0.8em;
-        background: #ffffff;
-        border: 1px solid rgba(0,0,0,0.18);
-        padding: 0.2em 0.4em;
+        font-size: 0.82em;
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(0, 0, 0, 0.18);
+        color: #0c142e;
+        padding: 0.2em 0.5em;
         border-radius: 3px;
         cursor: pointer;
         user-select: all;
+        display: inline-block;
+    }}
+    .pkg-cmd:hover {{
+        background: rgba(255, 255, 255, 0.95);
+        border-color: #aa2022;
     }}
     .catalog-link {{
         float: right;
