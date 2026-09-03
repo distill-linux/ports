@@ -1,13 +1,15 @@
-# Distill Linux Ports & Package Management Infrastructure
+# Distill Linux Ports & Package Recipes
 
-This repository contains the core native package management infrastructure and official source recipes for **Distill Linux**, a minimal Linux distribution built on `musl libc`, `Toybox`, and strict POSIX compliance.
+Official package recipes and repository catalog generator for **Distill Linux**.
 
-The ecosystem consists of two separate, native C utilities:
-1. **`drop`**: Official precompiled binary package manager (ultra-minimal, <40 KB, pure musl + zlib).
-2. **`sink`**: Community user repository helper and build engine (libgit2 + libcurl + musl + zlib).
+## Native Package Tooling
+Distill package management is split across dedicated repositories:
+- **[`drop`](https://github.com/distill-linux/drop)**: Minimal binary package manager (<40 KB stripped, musl + zlib).
+- **[`sink`](https://github.com/distill-linux/sink)**: Community source builder and ports engine (libgit2 + libcurl + zlib).
+- **[`ports`](https://github.com/distill-linux/ports)** (this repo): Official package recipes and repository catalog tooling.
 
-Official package repository is published live at:
-**[https://distill-linux.github.io/](https://distill-linux.github.io/)**
+Official package repository catalog is published live at:
+**[https://distill-linux.github.io/pkgs/](https://distill-linux.github.io/pkgs/)**
 
 ---
 
@@ -16,15 +18,15 @@ Official package repository is published live at:
 ### In Distill Linux (`drop`):
 ```sh
 # Configure repository
-export DROP_REPO_URL="https://distill-linux.github.io"
+export DROP_REPO_URL="https://distill-linux.github.io/pkgs"
 
 # Update package catalog
 drop update
 
-# Install samurai
+# Install a package
 drop in samurai
 
-# Verify package integrity
+# Verify package integrity against stored SHA-256 hashes
 drop check samurai
 
 # List installed packages
@@ -51,9 +53,19 @@ sink clean
 
 ---
 
-## 2. The `.PORT` Specification
+## 2. Available Recipes
 
-All packages use `.drop` containers (streaming zlib-compressed POSIX `ustar`) where the very first entry is the `.PORT` file.
+| Recipe | Description | Upstream Source |
+|---|---|---|
+| [`recipes/samurai.port`](recipes/samurai.port) | Ninja-compatible build tool written in C | [michaelforney/samurai](https://github.com/michaelforney/samurai) |
+| [`recipes/drop.port`](recipes/drop.port) | Native binary package manager for Distill Linux | [distill-linux/drop](https://github.com/distill-linux/drop) |
+| [`recipes/sink.port`](recipes/sink.port) | Community source builder & ports engine | [distill-linux/sink](https://github.com/distill-linux/sink) |
+
+---
+
+## 3. The `.PORT` Specification
+
+All packages produce `.drop` containers (streaming zlib-compressed POSIX `ustar`) where entry #1 is the `.PORT` file.
 
 ```ini
 PORT_NAME="samurai"
@@ -67,31 +79,12 @@ BUILD_DEPS=""
 RUN_DEPS=""
 
 BUILD:
-make PREFIX=/usr
+make CC=clang PREFIX=/usr
 make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install
 
 FILES:
-/usr/bin/samu:6a6ca06b2dc038299ddb2843144fb160f4818b3f42a9ae6839843f3d1aba39a4
-/usr/share/man/man1/samu.1:b4f535...
-```
-
----
-
-## 3. Building `drop` and `sink`
-
-GNU `make` is strictly forbidden. The codebase builds with **Samurai (`samu`)** by default, or BSD `bmake`:
-
-```sh
-# Build with samurai
-samu -v
-
-# Or build with BSD make
-bmake
-```
-
-### Running Test Suite:
-```sh
-./tests/run_all.sh
+/usr/bin/samu:8a0b2a40...
+/usr/share/man/man1/samu.1:3fb96b...
 ```
 
 ---
@@ -102,4 +95,4 @@ To add a new package:
 1. Create `recipes/<pkgname>.port`.
 2. Test build locally with `sink make recipes/<pkgname>.port`.
 3. Verify installation with `drop in <pkgname>-<version>.drop` and `drop check <pkgname>`.
-4. Open a Pull Request to this repository. Upon merge to `main`, GitHub Actions automatically builds the package and updates `https://distill-linux.github.io/`.
+4. Open a Pull Request to this repository.

@@ -5,7 +5,6 @@ on:
     branches: [ main ]
     paths:
       - 'recipes/**'
-      - 'src/**'
       - 'tools/**'
   workflow_dispatch:
 
@@ -16,21 +15,22 @@ jobs:
       - name: Checkout Ports Repository
         uses: actions/checkout@v4
 
-      - name: Build drop & sink, Build Recipes, and Generate Catalog
+      - name: Build Recipes via Sink and Generate Catalog
         run: |
           docker run --rm -v ${{ github.workspace }}:/work -w /work ghcr.io/void-linux/void-musl-full:latest sh -c '
             xbps-install -Syu && \
-            xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel clang lld llvm git curl
+            xbps-install -y samurai bmake libgit2-devel libcurl-devel zlib-devel clang lld llvm git curl python3
             
-            # Build drop and sink with samurai
-            samu -v
+            # Build sink tool from official repo
+            git clone https://github.com/distill-linux/sink.git /tmp/sink-tool
+            cd /tmp/sink-tool && samu && cd /work
             
-            # Build recipes into packages directory
+            # Build all port recipes into packages directory
             mkdir -p packages
             for recipe in recipes/*.port; do
               [ -f "$recipe" ] || continue
               echo "==> Building $recipe..."
-              ./src/sink/sink --out packages make "$recipe"
+              /tmp/sink-tool/sink --out packages make "$recipe"
             done
             
             # Generate index.tsv and index.html
@@ -46,19 +46,20 @@ jobs:
           git config --global user.email "ci@distilllinux.org"
 
           git clone https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git /tmp/pages-repo || {
-            echo "Clone via token, creating repo locally if needed"
+            echo "Clone failed, creating repo locally"
             mkdir -p /tmp/pages-repo
             cd /tmp/pages-repo
             git init -b main
             git remote add origin https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git
           }
           
-          # Copy artifacts
-          cp -r packages/* /tmp/pages-repo/
+          # Copy packages and catalog to static/pkgs
+          mkdir -p /tmp/pages-repo/static/pkgs
+          cp -r packages/* /tmp/pages-repo/static/pkgs/
           
           cd /tmp/pages-repo
           git add -A
-          git diff --staged --quiet || {
-            git commit -m "Automated build & catalog update via GitHub Actions"
+          git diff-index --quiet HEAD || {
+            git commit -m "Automated update of official binary packages and index"
             git push origin main
           }

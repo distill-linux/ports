@@ -1,11 +1,16 @@
 .POSIX:
 
-all:
-	cd src/drop && $(MAKE)
-	cd src/sink && $(MAKE)
+all: packages
+
+packages:
+	mkdir -p dist-packages
+	for r in recipes/*.port; do \
+		[ -f "$$r" ] || continue; \
+		sink --out dist-packages make "$$r"; \
+	done
+	./tools/gen-repo.sh dist-packages
 
 clean:
-	cd src/drop && $(MAKE) clean
-	cd src/sink && $(MAKE) clean
+	rm -rf dist-packages /tmp/sink
 
-.PHONY: all clean
+.PHONY: all packages clean
