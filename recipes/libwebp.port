@@ -1,0 +1,15 @@
+PORT_NAME="libwebp"
+PORT_VERSION="1.6.0"
+PORT_RELEASE="1"
+PORT_DESC="WebP image format"
+PORT_URL="https://developers.google.com/speed/webp/"
+PORT_COMMIT="1.6.0"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="giflib-devel libpng-devel libfreeglut-devel
+ $(vopt_if tiff tiff-devel)"
+
+BUILD:
+cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

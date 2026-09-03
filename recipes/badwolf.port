@@ -1,0 +1,14 @@
+PORT_NAME="badwolf"
+PORT_VERSION="1.4.0"
+PORT_RELEASE="1"
+PORT_DESC="Minimalist and privacy-oriented WebKitGTK+ browser"
+PORT_URL="https://hacktivis.me/projects/badwolf"
+PORT_COMMIT="1.4.0"
+BUILD_SYSTEM="configure"
+BUILD_DEPS="pkg-config gettext ninja ed"
+RUN_DEPS="libwebkit2gtk41-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

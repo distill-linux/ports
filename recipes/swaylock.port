@@ -1,0 +1,15 @@
+PORT_NAME="swaylock"
+PORT_VERSION="1.8.6"
+PORT_RELEASE="1"
+PORT_DESC="Screen locker for Wayland"
+PORT_URL="https://github.com/swaywm/swaylock"
+PORT_COMMIT="1.8.6"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel scdoc git"
+RUN_DEPS="wayland-protocols cairo-devel gdk-pixbuf-devel pam-devel
+ libxkbcommon-devel wayland-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

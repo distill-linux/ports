@@ -1,0 +1,14 @@
+PORT_NAME="libX11"
+PORT_VERSION="1.8.13"
+PORT_RELEASE="1"
+PORT_DESC="Base X libraries from Xorg"
+PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libx11"
+PORT_COMMIT="1.8.13"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config xorg-util-macros xorgproto"
+RUN_DEPS="xorgproto xtrans libxcb-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,14 @@
+PORT_NAME="tcc"
+PORT_VERSION="0.9.27.20250903"
+PORT_RELEASE="1"
+PORT_DESC="Tiny C Compiler"
+PORT_URL="http://bellard.org/tcc/"
+PORT_COMMIT="0.9.27.20250903"
+BUILD_SYSTEM="configure"
+BUILD_DEPS="perl which"
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,13 @@
+PORT_NAME="wlroots"
+PORT_VERSION="0.20"
+PORT_RELEASE="1"
+PORT_DESC="Modular Wayland compositor library"
+PORT_URL="https://github.com/swaywm/wlroots"
+PORT_COMMIT="0.20"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

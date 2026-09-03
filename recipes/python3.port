@@ -1,0 +1,15 @@
+PORT_NAME="python3"
+PORT_VERSION="3.14.6"
+PORT_RELEASE="1"
+PORT_DESC="Python programming language (${version%.*} series)"
+PORT_URL="https://www.python.org"
+PORT_COMMIT="3.14.6"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkgconf autoconf-archive automake"
+RUN_DEPS="libffi-devel readline-devel gdbm-devel openssl-devel
+ expat-devel sqlite-devel bzip2-devel zlib-devel liblzma-devel libzstd-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

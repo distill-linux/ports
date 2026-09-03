@@ -1,0 +1,12 @@
+PORT_NAME="rustc-bin"
+PORT_VERSION="1.78.0"
+PORT_RELEASE="1"
+PORT_DESC="Rust compiler (precompiled binary bootstrap toolchain)"
+PORT_URL="https://static.rust-lang.org/dist/rust-1.78.0-x86_64-unknown-linux-musl.tar.gz"
+PORT_COMMIT="1.78.0"
+BUILD_SYSTEM="sh"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./install.sh --destdir="$PKG_FAKEROOT" --prefix=/usr

@@ -1,0 +1,16 @@
+PORT_NAME="zathura"
+PORT_VERSION="2026.07.18"
+PORT_RELEASE="1"
+PORT_DESC="Highly customizable and functional document viewer"
+PORT_URL="https://pwmt.org/projects/zathura/"
+PORT_COMMIT="2026.07.18"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config gettext python3-Sphinx desktop-file-utils
+ appstream-glib glib-devel librsvg-utils"
+RUN_DEPS="girara-devel sqlite-devel file-devel zlib-devel libseccomp-devel
+ libglib-devel gtk4-devel texlive-devel xxHash-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

@@ -1,0 +1,14 @@
+PORT_NAME="musl-obstack"
+PORT_VERSION="1.2.3"
+PORT_RELEASE="1"
+PORT_DESC="Implementation of obstack for musl libc"
+PORT_URL="https://github.com/void-linux/musl-obstack"
+PORT_COMMIT="1.2.3"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="automake libtool"
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

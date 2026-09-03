@@ -1,0 +1,14 @@
+PORT_NAME="pixman"
+PORT_VERSION="0.46.4"
+PORT_RELEASE="1"
+PORT_DESC="Library of low-level pixel manipulation routines"
+PORT_URL="http://pixman.org/"
+PORT_COMMIT="0.46.4"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config perl"
+RUN_DEPS="libpng-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

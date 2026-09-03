@@ -1,0 +1,14 @@
+PORT_NAME="wayland-protocols"
+PORT_VERSION="1.49"
+PORT_RELEASE="1"
+PORT_DESC="Protocols and extensions complementing the Wayland core protocol"
+PORT_URL="https://wayland.freedesktop.org"
+PORT_COMMIT="1.49"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel"
+RUN_DEPS="wayland-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

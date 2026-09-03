@@ -1,0 +1,13 @@
+PORT_NAME="dwl"
+PORT_VERSION="0.6"
+PORT_RELEASE="1"
+PORT_DESC="Compact, hackable Wayland compositor based on wlroots"
+PORT_URL="https://codeberg.org/dwl/dwl.git"
+PORT_COMMIT="0.6"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

@@ -1,0 +1,14 @@
+PORT_NAME="alacritty"
+PORT_VERSION="0.17.0"
+PORT_RELEASE="1"
+PORT_DESC="Cross-platform, GPU-accelerated terminal emulator"
+PORT_URL="https://github.com/alacritty/alacritty"
+PORT_COMMIT="0.17.0"
+BUILD_SYSTEM="cargo"
+BUILD_DEPS="pkg-config python3 scdoc"
+RUN_DEPS="freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel"
+
+BUILD:
+cargo build --release --locked
+install -d "$PKG_FAKEROOT/usr/bin"
+find target/release -maxdepth 1 -type f -executable -exec install -m 755 {} "$PKG_FAKEROOT/usr/bin/" \;

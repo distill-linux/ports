@@ -1,0 +1,16 @@
+PORT_NAME="netsurf"
+PORT_VERSION="3.11"
+PORT_RELEASE="1"
+PORT_DESC="Free, open source web browser written in C"
+PORT_URL="https://www.netsurf-browser.org"
+PORT_COMMIT="3.11"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS="pkg-config gperf flex nsgenbind gdk-pixbuf-devel
+ tar perl-HTML-Parser glib-devel xxd"
+RUN_DEPS="
+ libcurl-devel libwebp-devel libcss-devel libnsbmp-devel libnsgif-devel
+ libutf8proc-devel libnsutils-devel libdom-devel gtk+3-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

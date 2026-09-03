@@ -1,0 +1,14 @@
+PORT_NAME="xload"
+PORT_VERSION="1.2.2"
+PORT_RELEASE="1"
+PORT_DESC="System load average display for X"
+PORT_URL="http://www.x.org/archive/X11R6.8.1/doc/xload.1.html"
+PORT_COMMIT="1.2.2"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="gettext pkg-config xorg-util-macros"
+RUN_DEPS="libXaw-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

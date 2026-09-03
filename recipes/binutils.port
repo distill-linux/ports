@@ -1,0 +1,13 @@
+PORT_NAME="binutils"
+PORT_VERSION="2.44"
+PORT_RELEASE="1"
+PORT_DESC="GNU binary utilities"
+PORT_URL="http://www.gnu.org/software/binutils/"
+PORT_COMMIT="2.44"
+BUILD_SYSTEM="make"
+BUILD_DEPS="pkgconf tar"
+RUN_DEPS="zlib-devel libzstd-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

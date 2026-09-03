@@ -1,0 +1,14 @@
+PORT_NAME="wayland"
+PORT_VERSION="1.26.0"
+PORT_RELEASE="1"
+PORT_DESC="Core Wayland window system code and protocol"
+PORT_URL="https://wayland.freedesktop.org/"
+PORT_COMMIT="1.26.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="flex pkg-config"
+RUN_DEPS="expat-devel libffi-devel libfl-devel libxml2-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

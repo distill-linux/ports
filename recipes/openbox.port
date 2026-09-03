@@ -1,0 +1,16 @@
+PORT_NAME="openbox"
+PORT_VERSION="3.6.1"
+PORT_RELEASE="1"
+PORT_DESC="Standards compliant, fast, light-weight, extensible window manager"
+PORT_URL="http://www.openbox.org"
+PORT_COMMIT="3.6.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="automake libtool pkg-config gettext-devel"
+RUN_DEPS="startup-notification-devel libxml2-devel libXrandr-devel
+ libXcursor-devel libXinerama-devel libSM-devel imlib2-devel
+ pango-devel $(vopt_if svg librsvg-devel)"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

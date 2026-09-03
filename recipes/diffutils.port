@@ -1,0 +1,14 @@
+PORT_NAME="diffutils"
+PORT_VERSION="3.12"
+PORT_RELEASE="1"
+PORT_DESC="GNU diff utilities"
+PORT_URL="https://www.gnu.org/software/diffutils"
+PORT_COMMIT="3.12"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

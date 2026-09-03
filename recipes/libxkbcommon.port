@@ -1,0 +1,15 @@
+PORT_NAME="libxkbcommon"
+PORT_VERSION="1.13.2"
+PORT_RELEASE="1"
+PORT_DESC="Library to handle keyboard descriptions"
+PORT_URL="https://xkbcommon.org/"
+PORT_COMMIT="1.13.2"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config bison wayland-protocols wayland-devel"
+RUN_DEPS="xkeyboard-config libxcb-devel wayland-devel wayland-protocols
+ xorgproto libxml2-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

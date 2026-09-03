@@ -1,0 +1,14 @@
+PORT_NAME="nasm"
+PORT_VERSION="2.16.03"
+PORT_RELEASE="1"
+PORT_DESC="80x86 assembler designed for portability and modularity"
+PORT_URL="https://www.nasm.us"
+PORT_COMMIT="2.16.03"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

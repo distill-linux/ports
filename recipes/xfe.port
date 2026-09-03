@@ -1,0 +1,14 @@
+PORT_NAME="xfe"
+PORT_VERSION="2.1.7"
+PORT_RELEASE="1"
+PORT_DESC="Lightweight file manager for X"
+PORT_URL="http://roland65.free.fr/xfe/"
+PORT_COMMIT="2.1.7"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config gettext"
+RUN_DEPS="startup-notification-devel libpng-devel fox-devel xcb-util-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

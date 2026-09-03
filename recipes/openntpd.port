@@ -1,0 +1,14 @@
+PORT_NAME="openntpd"
+PORT_VERSION="7.9p1"
+PORT_RELEASE="1"
+PORT_DESC="FREE, easy to use implementation of the Network Time Protocol"
+PORT_URL="http://openntpd.org/"
+PORT_COMMIT="7.9p1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="automake libtool"
+RUN_DEPS="libtls-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

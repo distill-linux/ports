@@ -1,0 +1,14 @@
+PORT_NAME="libpng"
+PORT_VERSION="1.6.58"
+PORT_RELEASE="1"
+PORT_DESC="Library for manipulating PNG images"
+PORT_URL="http://www.libpng.org/pub/png/libpng.html"
+PORT_COMMIT="1.6.58"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS="zlib-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

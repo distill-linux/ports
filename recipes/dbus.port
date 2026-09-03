@@ -1,0 +1,14 @@
+PORT_NAME="dbus"
+PORT_VERSION="1.16.2"
+PORT_RELEASE="1"
+PORT_DESC="Message bus system"
+PORT_URL="https://dbus.freedesktop.org/"
+PORT_COMMIT="1.16.2"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="gettext pkg-config xmlto"
+RUN_DEPS="expat-devel libX11-devel libcap-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

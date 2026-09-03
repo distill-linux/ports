@@ -1,0 +1,14 @@
+PORT_NAME="nsxiv"
+PORT_VERSION="34"
+PORT_RELEASE="1"
+PORT_DESC="Neo (or New or Not) Simple (or Small or Suckless) X Image Viewer"
+PORT_URL="https://codeberg.org/nsxiv/nsxiv"
+PORT_COMMIT="34"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS=""
+RUN_DEPS="libX11-devel imlib2-devel giflib-devel libexif-devel libXft-devel
+ libwebp-devel freetype-devel fontconfig-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

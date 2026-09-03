@@ -1,0 +1,14 @@
+PORT_NAME="xcb-util-renderutil"
+PORT_VERSION="0.3.10"
+PORT_RELEASE="1"
+PORT_DESC="Utility libraries for XCB - Render extension convenience functions"
+PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxcb-render-util"
+PORT_COMMIT="0.3.10"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libxcb-devel xcb-util-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

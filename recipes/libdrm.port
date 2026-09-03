@@ -1,0 +1,14 @@
+PORT_NAME="libdrm"
+PORT_VERSION="2.4.134"
+PORT_RELEASE="1"
+PORT_DESC="Userspace interface to kernel DRM services"
+PORT_URL="https://dri.freedesktop.org/"
+PORT_COMMIT="2.4.134"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config python3-docutils"
+RUN_DEPS="eudev-libudev-devel libpciaccess-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

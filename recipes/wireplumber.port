@@ -1,0 +1,14 @@
+PORT_NAME="wireplumber"
+PORT_VERSION="0.5.15"
+PORT_RELEASE="1"
+PORT_DESC="Session and policy manager implementation for PipeWire"
+PORT_URL="https://pipewire.pages.freedesktop.org/wireplumber"
+PORT_COMMIT="0.5.15"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config glib-devel python3-lxml doxygen gettext"
+RUN_DEPS="libglib-devel pipewire-devel lua54-devel elogind-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

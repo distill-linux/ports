@@ -1,0 +1,14 @@
+PORT_NAME="wtype"
+PORT_VERSION="0.4"
+PORT_RELEASE="1"
+PORT_DESC="Wayland version of xdotool"
+PORT_URL="https://github.com/atx/wtype"
+PORT_COMMIT="0.4"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel"
+RUN_DEPS="libxkbcommon-devel wayland-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

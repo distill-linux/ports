@@ -1,0 +1,13 @@
+PORT_NAME="smake"
+PORT_VERSION="2024.03.21"
+PORT_RELEASE="1"
+PORT_DESC="Schily's portable tools"
+PORT_URL="https://codeberg.org/schilytools/schilytools"
+PORT_COMMIT="2024.03.21"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS="acl-devel attr-devel e2fsprogs-devel libcap-progs m4"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

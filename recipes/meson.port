@@ -1,0 +1,13 @@
+PORT_NAME="meson"
+PORT_VERSION="1.9.1"
+PORT_RELEASE="1"
+PORT_DESC="Super fast build system"
+PORT_URL="https://mesonbuild.com"
+PORT_COMMIT="1.9.1"
+BUILD_SYSTEM="python3-module"
+BUILD_DEPS="python3-devel python3-setuptools"
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

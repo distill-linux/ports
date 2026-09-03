@@ -1,0 +1,15 @@
+PORT_NAME="grim"
+PORT_VERSION="1.5.0"
+PORT_RELEASE="1"
+PORT_DESC="Grab images from a Wayland compositor"
+PORT_URL="https://gitlab.freedesktop.org/emersion/grim"
+PORT_COMMIT="1.5.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel scdoc"
+RUN_DEPS="wayland-devel wayland-protocols pixman-devel libjpeg-turbo-devel
+ libpng-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

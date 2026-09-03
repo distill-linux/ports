@@ -1,0 +1,14 @@
+PORT_NAME="eudev"
+PORT_VERSION="3.2.14"
+PORT_RELEASE="1"
+PORT_DESC="Fork of systemd-udev (enhanced userland device daemon)"
+PORT_URL="https://github.com/eudev-project/eudev"
+PORT_COMMIT="3.2.14"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config gperf"
+RUN_DEPS="libblkid-devel libkmod-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

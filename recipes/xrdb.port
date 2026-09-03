@@ -1,0 +1,14 @@
+PORT_NAME="xrdb"
+PORT_VERSION="1.2.3"
+PORT_RELEASE="1"
+PORT_DESC="X server resource database utility"
+PORT_URL="https://gitlab.freedesktop.org/xorg/app/xrdb"
+PORT_COMMIT="1.2.3"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libX11-devel libXmu-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

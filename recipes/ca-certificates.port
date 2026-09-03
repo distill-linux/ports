@@ -1,0 +1,13 @@
+PORT_NAME="ca-certificates"
+PORT_VERSION="20250419+3.127"
+PORT_RELEASE="1"
+PORT_DESC="Common CA certificates for SSL/TLS from Mozilla"
+PORT_URL="https://wiki.mozilla.org/NSS:Root_certs"
+PORT_COMMIT="20250419+3.127"
+BUILD_SYSTEM="make"
+BUILD_DEPS="openssl"
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

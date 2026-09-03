@@ -1,0 +1,14 @@
+PORT_NAME="glslang"
+PORT_VERSION="16.3.0"
+PORT_RELEASE="1"
+PORT_DESC="Khronos reference front-end for GLSL, ESSL, and sample SPIR-V generator"
+PORT_URL="https://github.com/KhronosGroup/glslang"
+PORT_COMMIT="16.3.0"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="python3 bison gtest-devel"
+RUN_DEPS="SPIRV-Tools-devel"
+
+BUILD:
+cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

@@ -1,0 +1,15 @@
+PORT_NAME="kmscon"
+PORT_VERSION="9.3.4"
+PORT_RELEASE="1"
+PORT_DESC="Linux KMS/DRM based virtual Console Emulator"
+PORT_URL="https://github.com/kmscon/kmscon"
+PORT_COMMIT="9.3.4"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config docbook-xsl xkeyboard-config libxslt zlib-devel"
+RUN_DEPS="MesaLib-devel pango-devel libtsm-devel libxkbcommon-devel
+ eudev-libudev-devel libdrm-devel libgbm-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

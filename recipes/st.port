@@ -1,0 +1,13 @@
+PORT_NAME="st"
+PORT_VERSION="0.9.3"
+PORT_RELEASE="1"
+PORT_DESC="Simple terminal implementation for X"
+PORT_URL="https://st.suckless.org"
+PORT_COMMIT="0.9.3"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="fontconfig-devel libX11-devel libXft-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

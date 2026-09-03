@@ -1,0 +1,14 @@
+PORT_NAME="pango"
+PORT_VERSION="1.56.3"
+PORT_RELEASE="1"
+PORT_DESC="Library for layout and rendering of text"
+PORT_URL="https://www.pango.org/"
+PORT_COMMIT="1.56.3"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="glib-devel pkg-config python3-docutils"
+RUN_DEPS="fribidi-devel harfbuzz-devel libXft-devel libthai-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

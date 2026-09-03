@@ -1,0 +1,13 @@
+PORT_NAME="cargo"
+PORT_VERSION="1.98.0"
+PORT_RELEASE="1"
+PORT_DESC="Rust package manager"
+PORT_URL="https://crates.io/"
+PORT_COMMIT="1.98.0"
+BUILD_SYSTEM="make"
+BUILD_DEPS="cargo-bootstrap rust pkg-config"
+RUN_DEPS="rust libcurl-devel openssl-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

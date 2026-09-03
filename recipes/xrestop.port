@@ -1,0 +1,14 @@
+PORT_NAME="xrestop"
+PORT_VERSION="0.6"
+PORT_RELEASE="1"
+PORT_DESC="Top-like X Server resource usage monitor that uses the XRes extension"
+PORT_URL="https://www.freedesktop.org/wiki/Software/xrestop/"
+PORT_COMMIT="0.6"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libXres-devel ncurses-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

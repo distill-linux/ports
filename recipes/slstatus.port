@@ -1,0 +1,13 @@
+PORT_NAME="slstatus"
+PORT_VERSION="20180708"
+PORT_RELEASE="1"
+PORT_DESC="Suckless status monitor for dwm"
+PORT_URL="https://tools.suckless.org/slstatus/"
+PORT_COMMIT="20180708"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS=""
+RUN_DEPS="alsa-lib-devel libX11-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

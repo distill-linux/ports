@@ -1,0 +1,13 @@
+PORT_NAME="libvpx"
+PORT_VERSION="1.16.0"
+PORT_RELEASE="1"
+PORT_DESC="VP8 and VP9 video codec"
+PORT_URL="http://www.webmproject.org"
+PORT_COMMIT="1.16.0"
+BUILD_SYSTEM="make"
+BUILD_DEPS="perl"
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

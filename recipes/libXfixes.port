@@ -1,0 +1,14 @@
+PORT_NAME="libXfixes"
+PORT_VERSION="6.0.2"
+PORT_RELEASE="1"
+PORT_DESC="Xfixes library and extension of X RandR from modular X.org"
+PORT_URL="https://xorg.freedesktop.org"
+PORT_COMMIT="6.0.2"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="xorgproto libX11-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

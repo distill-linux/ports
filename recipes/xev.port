@@ -1,0 +1,14 @@
+PORT_NAME="xev"
+PORT_VERSION="1.2.6"
+PORT_RELEASE="1"
+PORT_DESC="Display X events"
+PORT_URL="https://xorg.freedesktop.org"
+PORT_COMMIT="1.2.6"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libXrandr-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

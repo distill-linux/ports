@@ -1,0 +1,15 @@
+PORT_NAME="mako"
+PORT_VERSION="1.11.0"
+PORT_RELEASE="1"
+PORT_DESC="Lightweight Wayland notification daemon"
+PORT_URL="https://wayland.emersion.fr/mako/"
+PORT_COMMIT="1.11.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config scdoc wayland-devel wayland-protocols"
+RUN_DEPS="wayland-devel wayland-protocols pango-devel cairo-devel
+ basu-devel gdk-pixbuf-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

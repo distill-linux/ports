@@ -1,0 +1,14 @@
+PORT_NAME="alsa-lib"
+PORT_VERSION="1.2.16.1"
+PORT_RELEASE="1"
+PORT_DESC="Advanced Linux Sound Architecture (ALSA) library"
+PORT_URL="https://www.alsa-project.org/wiki/Main_Page"
+PORT_COMMIT="1.2.16.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config libtool"
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

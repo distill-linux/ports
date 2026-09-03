@@ -1,0 +1,14 @@
+PORT_NAME="libXcomposite"
+PORT_VERSION="0.4.7"
+PORT_RELEASE="1"
+PORT_DESC="X Composite Library"
+PORT_URL="https://wiki.freedesktop.org/xorg/"
+PORT_COMMIT="0.4.7"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="xorgproto libXfixes-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

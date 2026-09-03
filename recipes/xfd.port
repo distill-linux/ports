@@ -1,0 +1,14 @@
+PORT_NAME="xfd"
+PORT_VERSION="1.1.5"
+PORT_RELEASE="1"
+PORT_DESC="Display all the characters in an X font"
+PORT_URL="https://wiki.freedesktop.org/xorg/"
+PORT_COMMIT="1.1.5"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="gettext pkg-config"
+RUN_DEPS="libXaw-devel freetype-devel libXft-devel libxkbfile-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

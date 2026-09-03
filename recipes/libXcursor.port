@@ -1,0 +1,14 @@
+PORT_NAME="libXcursor"
+PORT_VERSION="1.2.3"
+PORT_RELEASE="1"
+PORT_DESC="Client-side cursor loading library for X"
+PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxcursor"
+PORT_COMMIT="1.2.3"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="xorgproto libXfixes-devel libXrender-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

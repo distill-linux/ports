@@ -1,0 +1,14 @@
+PORT_NAME="xcb-util-keysyms"
+PORT_VERSION="0.4.1"
+PORT_RELEASE="1"
+PORT_DESC="Utility libraries for XCB - key constants and keycode conversion"
+PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxcb-keysyms"
+PORT_COMMIT="0.4.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libxcb-devel xcb-util-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

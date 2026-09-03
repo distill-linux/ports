@@ -1,0 +1,14 @@
+PORT_NAME="vulkan-headers"
+PORT_VERSION="1.4.350.1"
+PORT_RELEASE="1"
+PORT_DESC="Vulkan header files"
+PORT_URL="https://www.khronos.org/vulkan/"
+PORT_COMMIT="1.4.350.1"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

@@ -1,0 +1,14 @@
+PORT_NAME="wpa_supplicant"
+PORT_VERSION="2.12"
+PORT_RELEASE="1"
+PORT_DESC="WPA/WPA2/IEEE 802.1X Supplicant"
+PORT_URL="http://w1.fi/wpa_supplicant/"
+PORT_COMMIT="2.12"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libnl3-devel openssl-devel $(vopt_if dbus dbus-devel)
+ $(vopt_if readline readline-devel)"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

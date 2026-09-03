@@ -1,0 +1,13 @@
+PORT_NAME="lz4"
+PORT_VERSION="1.10.0"
+PORT_RELEASE="1"
+PORT_DESC="Extremely fast compression algorithm"
+PORT_URL="https://lz4.github.io/lz4"
+PORT_COMMIT="1.10.0"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

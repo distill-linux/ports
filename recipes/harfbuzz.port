@@ -1,0 +1,14 @@
+PORT_NAME="harfbuzz"
+PORT_VERSION="14.3.1"
+PORT_RELEASE="1"
+PORT_DESC="OpenType text shaping engine"
+PORT_URL="https://harfbuzz.github.io/"
+PORT_COMMIT="14.3.1"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="glib-devel pkg-config gtk-doc"
+RUN_DEPS="cairo-devel graphite-devel icu-devel libxml2"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

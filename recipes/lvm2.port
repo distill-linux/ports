@@ -1,0 +1,15 @@
+PORT_NAME="lvm2"
+PORT_VERSION="2.03.29"
+PORT_RELEASE="1"
+PORT_DESC="Logical Volume Manager 2 utilities"
+PORT_URL="https://sourceware.org/lvm2/"
+PORT_COMMIT="2.03.29"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="eudev-libudev-devel libaio-devel libblkid-devel
+ readline-devel thin-provisioning-tools"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

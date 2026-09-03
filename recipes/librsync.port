@@ -1,0 +1,14 @@
+PORT_NAME="librsync"
+PORT_VERSION="2.3.4"
+PORT_RELEASE="1"
+PORT_DESC="Library that implements the rsync remote-delta algorithm (rdiff)"
+PORT_URL="http://librsync.sourceforge.net/"
+PORT_COMMIT="2.3.4"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="perl"
+RUN_DEPS="zlib-devel bzip2-devel popt-devel"
+
+BUILD:
+cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

@@ -1,0 +1,13 @@
+PORT_NAME="efibootmgr"
+PORT_VERSION="18"
+PORT_RELEASE="1"
+PORT_DESC="Tool to modify UEFI Firmware Boot Manager Variables"
+PORT_URL="https://github.com/rhboot/efibootmgr"
+PORT_COMMIT="18"
+BUILD_SYSTEM="make"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libefivar-devel popt-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

@@ -1,0 +1,14 @@
+PORT_NAME="xrefresh"
+PORT_VERSION="1.1.1"
+PORT_RELEASE="1"
+PORT_DESC="Refresh all or part of an X screen"
+PORT_URL="https://gitlab.freedesktop.org/xorg/app/xrefresh"
+PORT_COMMIT="1.1.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libX11-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

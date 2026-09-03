@@ -1,0 +1,14 @@
+PORT_NAME="python3-dev"
+PORT_VERSION="3.12.2"
+PORT_RELEASE="1"
+PORT_DESC="Python 3 programming language - development headers"
+PORT_URL="https://github.com/python/cpython.git"
+PORT_COMMIT="3.12.2"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr --enable-shared CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

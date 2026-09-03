@@ -1,0 +1,14 @@
+PORT_NAME="fribidi"
+PORT_VERSION="1.0.16"
+PORT_RELEASE="1"
+PORT_DESC="Free Implementation of the Unicode Bidirectional Algorithm"
+PORT_URL="https://github.com/fribidi/fribidi/"
+PORT_COMMIT="1.0.16"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,15 @@
+PORT_NAME="libva-utils"
+PORT_VERSION="2.24.0"
+PORT_RELEASE="1"
+PORT_DESC="Video Acceleration (VA) API - Utilities"
+PORT_URL="https://github.com/intel/libva-utils"
+PORT_COMMIT="2.24.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel"
+RUN_DEPS="libva-devel libXfixes-devel libXext-devel
+ libdrm-devel wayland-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

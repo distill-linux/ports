@@ -1,0 +1,14 @@
+PORT_NAME="patch"
+PORT_VERSION="2.8"
+PORT_RELEASE="1"
+PORT_DESC="Patch files using diff output"
+PORT_URL="http://www.gnu.org/software/patch/patch.html"
+PORT_COMMIT="2.8"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS="attr-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

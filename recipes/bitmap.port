@@ -1,0 +1,14 @@
+PORT_NAME="bitmap"
+PORT_VERSION="1.1.2"
+PORT_RELEASE="1"
+PORT_DESC="Bitmap editor and converter utilities for X"
+PORT_URL="http://xorg.freedesktop.org"
+PORT_COMMIT="1.1.2"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libXt-devel libXmu-devel libXaw-devel xbitmaps"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

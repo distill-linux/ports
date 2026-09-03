@@ -1,0 +1,14 @@
+PORT_NAME="xorgproto"
+PORT_VERSION="2025.1"
+PORT_RELEASE="1"
+PORT_DESC="Combined X.Org X11 Protocol headers"
+PORT_URL="https://gitlab.freedesktop.org/xorg/proto/xorgproto"
+PORT_COMMIT="2025.1"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="xorg-util-macros"
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

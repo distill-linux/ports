@@ -1,0 +1,14 @@
+PORT_NAME="libxcb"
+PORT_VERSION="1.17.0"
+PORT_RELEASE="1"
+PORT_DESC="X protocol C-language Binding"
+PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxcb"
+PORT_COMMIT="1.17.0"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="libtool pkg-config xorg-util-macros xcb-proto"
+RUN_DEPS="libXdmcp-devel libXau-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

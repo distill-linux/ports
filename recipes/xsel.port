@@ -1,0 +1,14 @@
+PORT_NAME="xsel"
+PORT_VERSION="1.2.1"
+PORT_RELEASE="1"
+PORT_DESC="Command-line getting and setting the contents of the X selection"
+PORT_URL="http://www.kfish.org/software/xsel/"
+PORT_COMMIT="1.2.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="autoconf automake pkg-config"
+RUN_DEPS="libXt-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

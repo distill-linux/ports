@@ -1,0 +1,13 @@
+PORT_NAME="qbe"
+PORT_VERSION="1.1"
+PORT_RELEASE="1"
+PORT_DESC="Quick Backend for compilers"
+PORT_URL="https://c9x.me/git/qbe.git"
+PORT_COMMIT="1.1"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

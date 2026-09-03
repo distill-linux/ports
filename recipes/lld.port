@@ -1,0 +1,13 @@
+PORT_NAME="lld"
+PORT_VERSION="21"
+PORT_RELEASE="1"
+PORT_DESC="LLVM meta package"
+PORT_URL="https://www.voidlinux.org"
+PORT_COMMIT="21"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

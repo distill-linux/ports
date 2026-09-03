@@ -1,0 +1,14 @@
+PORT_NAME="autoconf"
+PORT_VERSION="2.73"
+PORT_RELEASE="1"
+PORT_DESC="Generates automatic source code configuration scripts"
+PORT_URL="http://www.gnu.org/software/autoconf"
+PORT_COMMIT="2.73"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="perl m4 help2man"
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

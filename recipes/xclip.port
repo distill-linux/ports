@@ -1,0 +1,14 @@
+PORT_NAME="xclip"
+PORT_VERSION="0.13"
+PORT_RELEASE="1"
+PORT_DESC="Command line interface to the X11 clipboard"
+PORT_URL="https://github.com/astrand/xclip"
+PORT_COMMIT="0.13"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="automake"
+RUN_DEPS="libXmu-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

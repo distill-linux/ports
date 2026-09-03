@@ -1,0 +1,14 @@
+PORT_NAME="wl-clipboard"
+PORT_VERSION="2.3.0"
+PORT_RELEASE="1"
+PORT_DESC="Wayland clipboard utilities"
+PORT_URL="https://github.com/bugaevc/wl-clipboard"
+PORT_COMMIT="2.3.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="wayland-devel pkg-config"
+RUN_DEPS="wayland-protocols wayland-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

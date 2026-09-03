@@ -1,0 +1,13 @@
+PORT_NAME="pkgconf"
+PORT_VERSION="2.1.0"
+PORT_RELEASE="1"
+PORT_DESC="Provides compiler and linker configuration"
+PORT_URL="http://pkgconf.org/"
+PORT_COMMIT="2.1.0"
+BUILD_SYSTEM="gnu-configure # cmake and meson also available"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

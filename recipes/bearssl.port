@@ -1,0 +1,13 @@
+PORT_NAME="bearssl"
+PORT_VERSION="0.6"
+PORT_RELEASE="1"
+PORT_DESC="Implementation of the SSL/TLS protocol in C"
+PORT_URL="https://bearssl.org"
+PORT_COMMIT="0.6"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

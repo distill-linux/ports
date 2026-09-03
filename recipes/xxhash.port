@@ -1,0 +1,13 @@
+PORT_NAME="xxhash"
+PORT_VERSION="0.8.2"
+PORT_RELEASE="1"
+PORT_DESC="Fast non-cryptographic hashing algorithm"
+PORT_URL="https://cyan4973.github.io/xxHash/"
+PORT_COMMIT="0.8.2"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

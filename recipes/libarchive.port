@@ -1,0 +1,16 @@
+PORT_NAME="libarchive"
+PORT_VERSION="3.8.9"
+PORT_RELEASE="1"
+PORT_DESC="Library to read/write several different streaming archive formats"
+PORT_URL="https://www.libarchive.org/"
+PORT_COMMIT="3.8.9"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="zlib-devel bzip2-devel liblzma-devel
+ $(vopt_if acl acl-devel) $(vopt_if expat expat-devel) $(vopt_if zstd libzstd-devel)
+ $(vopt_if lzo lzo-devel) $(vopt_if lz4 liblz4-devel) $(vopt_if ssl openssl-devel)"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

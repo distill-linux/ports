@@ -1,0 +1,13 @@
+PORT_NAME="xf86-video-modesetting"
+PORT_VERSION="main"
+PORT_RELEASE="1"
+PORT_DESC="Generic modesetting video driver for X server (integrated)"
+PORT_URL="https://github.com/X11Libre/xserver.git"
+PORT_COMMIT="main"
+BUILD_SYSTEM="meta"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+mkdir -p "$PKG_FAKEROOT/usr/share/doc/xf86-video-modesetting"
+echo "Modesetting driver integrated into xlibre-server" > "$PKG_FAKEROOT/usr/share/doc/xf86-video-modesetting/README"

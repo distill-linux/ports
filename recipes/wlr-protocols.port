@@ -1,0 +1,14 @@
+PORT_NAME="wlr-protocols"
+PORT_VERSION="main"
+PORT_RELEASE="1"
+PORT_DESC="Wayland protocols used by wlroots and associated compositors"
+PORT_URL="https://gitlab.freedesktop.org/wlroots/wlr-protocols.git"
+PORT_COMMIT="main"
+BUILD_SYSTEM="meson"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

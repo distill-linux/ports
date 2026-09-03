@@ -1,0 +1,14 @@
+PORT_NAME="spirv-tools"
+PORT_VERSION="2026.2"
+PORT_RELEASE="1"
+PORT_DESC="API and commands for processing SPIR-V modules"
+PORT_URL="https://github.com/KhronosGroup/SPIRV-Tools"
+PORT_COMMIT="2026.2"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="python3"
+RUN_DEPS="SPIRV-Headers"
+
+BUILD:
+cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

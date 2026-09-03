@@ -1,0 +1,14 @@
+PORT_NAME="xcb-proto"
+PORT_VERSION="1.17.0"
+PORT_RELEASE="1"
+PORT_DESC="XML-XCB (X C Bindings) protocol descriptions"
+PORT_URL="https://gitlab.freedesktop.org/xorg/proto/xcbproto"
+PORT_COMMIT="1.17.0"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="python3 automake"
+RUN_DEPS="libxml2"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

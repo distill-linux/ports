@@ -1,0 +1,13 @@
+PORT_NAME="liberation-fonts-ttf"
+PORT_VERSION="2.1.5"
+PORT_RELEASE="1"
+PORT_DESC="Fonts from RedHat with same metrics as Times, Arial and Courier"
+PORT_URL="https://github.com/liberationfonts/liberation-fonts"
+PORT_COMMIT="2.1.5"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

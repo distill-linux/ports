@@ -1,0 +1,13 @@
+PORT_NAME="bsd-mk-files"
+PORT_VERSION="20240414"
+PORT_RELEASE="1"
+PORT_DESC="System bmake mk files"
+PORT_URL="https://github.com/crux-arm/mk-files.git"
+PORT_COMMIT="20240414"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+mkdir -p "$PKG_FAKEROOT/usr/share/mk"
+cp *.mk "$PKG_FAKEROOT/usr/share/mk/"

@@ -1,0 +1,15 @@
+PORT_NAME="cryptsetup"
+PORT_VERSION="2.8.7"
+PORT_RELEASE="1"
+PORT_DESC="Setup virtual encryption devices under Linux dm-crypt"
+PORT_URL="https://gitlab.com/cryptsetup/cryptsetup"
+PORT_COMMIT="2.8.7"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="device-mapper-devel json-c-devel openssl-devel popt-devel
+ libargon2-devel libssh-devel $(vopt_if pwquality libpwquality-devel)"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

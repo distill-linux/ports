@@ -1,0 +1,14 @@
+PORT_NAME="feh"
+PORT_VERSION="3.12.2"
+PORT_RELEASE="1"
+PORT_DESC="Fast and light imlib2-based image viewer"
+PORT_URL="https://feh.finalrewind.org"
+PORT_COMMIT="3.12.2"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="giblib-devel libXinerama-devel libXt-devel libcurl-devel
+ libexif-devel libjpeg-turbo-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

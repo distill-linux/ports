@@ -1,0 +1,14 @@
+PORT_NAME="xfontsel"
+PORT_VERSION="1.1.2"
+PORT_RELEASE="1"
+PORT_DESC="X font selector"
+PORT_URL="http://xorg.freedesktop.org"
+PORT_COMMIT="1.1.2"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config gettext"
+RUN_DEPS="libXaw-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

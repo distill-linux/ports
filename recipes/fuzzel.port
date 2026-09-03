@@ -1,0 +1,15 @@
+PORT_NAME="fuzzel"
+PORT_VERSION="1.14.1"
+PORT_RELEASE="1"
+PORT_DESC="Application launcher for wlroots based Wayland compositors"
+PORT_URL="https://codeberg.org/dnkl/fuzzel"
+PORT_COMMIT="1.14.1"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config scdoc wayland-devel"
+RUN_DEPS="fcft-devel libresvg-devel libpng-devel
+ libxkbcommon-devel pixman-devel tllist wayland-devel wayland-protocols"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

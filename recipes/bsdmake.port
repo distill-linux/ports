@@ -1,0 +1,14 @@
+PORT_NAME="bsdmake"
+PORT_VERSION="20240414"
+PORT_RELEASE="1"
+PORT_DESC="BSD Make (bmake) ported from NetBSD"
+PORT_URL="https://github.com/crux-arm/bmake.git"
+PORT_COMMIT="20240414"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr
+./make-bootstrap.sh
+install -D -m 755 bmake "$PKG_FAKEROOT/usr/bin/bmake"

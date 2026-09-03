@@ -1,0 +1,14 @@
+PORT_NAME="freetype"
+PORT_VERSION="2.14.3"
+PORT_RELEASE="1"
+PORT_DESC="Font rendering engine and library API"
+PORT_URL="https://www.freetype.org/"
+PORT_COMMIT="2.14.3"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="bzip2-devel libpng-devel brotli-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,14 @@
+PORT_NAME="swaybg"
+PORT_VERSION="1.2.2"
+PORT_RELEASE="1"
+PORT_DESC="Wallpaper tool for Wayland compositors"
+PORT_URL="https://swaywm.org"
+PORT_COMMIT="1.2.2"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel scdoc"
+RUN_DEPS="wayland-protocols cairo-devel gdk-pixbuf-devel wayland-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

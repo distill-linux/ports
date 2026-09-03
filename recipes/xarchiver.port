@@ -1,0 +1,14 @@
+PORT_NAME="xarchiver"
+PORT_VERSION="0.5.4.26"
+PORT_RELEASE="1"
+PORT_DESC="Lightweight desktop independent archive manager"
+PORT_URL="https://github.com/ib/xarchiver"
+PORT_COMMIT="0.5.4.26"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config intltool"
+RUN_DEPS="gtk+3-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

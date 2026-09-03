@@ -1,0 +1,14 @@
+PORT_NAME="yasm"
+PORT_VERSION="1.3.0"
+PORT_RELEASE="1"
+PORT_DESC="Complete rewrite of the NASM assembler"
+PORT_URL="http://www.tortall.net/projects/yasm/"
+PORT_COMMIT="1.3.0"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

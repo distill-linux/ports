@@ -1,0 +1,14 @@
+PORT_NAME="azpainter"
+PORT_VERSION="3.0.12"
+PORT_RELEASE="1"
+PORT_DESC="Painting software for illustrations and image editing"
+PORT_URL="https://azelpg.gitlab.io/azsky2"
+PORT_COMMIT="3.0.12"
+BUILD_SYSTEM="configure"
+BUILD_DEPS="pkg-config ninja"
+RUN_DEPS="fontconfig-devel libXcursor-devel libXi-devel libXrender-devel libjpeg-turbo-devel libpng-devel libwebp-devel tiff-devel zlib-devel freetype-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

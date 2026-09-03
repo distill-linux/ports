@@ -1,0 +1,13 @@
+PORT_NAME="luit"
+PORT_VERSION="1.0"
+PORT_RELEASE="1"
+PORT_DESC="luit package for Distill Linux"
+PORT_URL="https://github.com/distill-linux/luit"
+PORT_COMMIT="1.0"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

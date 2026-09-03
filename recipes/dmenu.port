@@ -1,0 +1,13 @@
+PORT_NAME="dmenu"
+PORT_VERSION="5.4"
+PORT_RELEASE="1"
+PORT_DESC="Generic menu for X"
+PORT_URL="https://tools.suckless.org/dmenu/"
+PORT_COMMIT="5.4"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS="libXinerama-devel libXft-devel freetype-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

@@ -1,0 +1,14 @@
+PORT_NAME="flex"
+PORT_VERSION="2.6.4"
+PORT_RELEASE="1"
+PORT_DESC="Fast Lexical Analyzer"
+PORT_URL="https://github.com/westes/flex"
+PORT_COMMIT="2.6.4"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="bison"
+RUN_DEPS="bison"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

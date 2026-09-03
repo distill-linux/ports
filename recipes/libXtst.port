@@ -1,0 +1,14 @@
+PORT_NAME="libXtst"
+PORT_VERSION="1.2.5"
+PORT_RELEASE="1"
+PORT_DESC="X Tst Library"
+PORT_URL="${XORG_SITE}"
+PORT_COMMIT="1.2.5"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="xorgproto libXext-devel libXi-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

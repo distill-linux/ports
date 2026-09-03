@@ -1,0 +1,14 @@
+PORT_NAME="fontconfig"
+PORT_VERSION="2.17.1"
+PORT_RELEASE="1"
+PORT_DESC="Library for configuring and customizing font access"
+PORT_URL="http://www.fontconfig.org"
+PORT_COMMIT="2.17.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="gperf pkg-config python3"
+RUN_DEPS="expat-devel freetype-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

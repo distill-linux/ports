@@ -1,0 +1,14 @@
+PORT_NAME="cage"
+PORT_VERSION="0.3.0"
+PORT_RELEASE="1"
+PORT_DESC="Kiosk compositor for Wayland"
+PORT_URL="https://www.hjdskes.nl/projects/cage/"
+PORT_COMMIT="0.3.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel scdoc"
+RUN_DEPS="libxkbcommon-devel wlroots0.20-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

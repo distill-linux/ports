@@ -1,0 +1,15 @@
+PORT_NAME="cairo"
+PORT_VERSION="1.18.4"
+PORT_RELEASE="1"
+PORT_DESC="Vector graphics library with cross-device output support"
+PORT_URL="https://cairographics.org"
+PORT_COMMIT="1.18.4"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="fontconfig-devel freetype-devel libglib-devel libpng-devel libX11-devel
+ libxcb-devel libXext-devel libXrender-devel lzo-devel pixman-devel zlib-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

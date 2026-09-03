@@ -1,0 +1,15 @@
+PORT_NAME="picom"
+PORT_VERSION="13"
+PORT_RELEASE="1"
+PORT_DESC="Lightweight compositor for X11 (previously a compton fork)"
+PORT_URL="https://github.com/yshui/picom/"
+PORT_COMMIT="13"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config ruby-asciidoctor"
+RUN_DEPS="dbus-devel libconfig-devel libepoxy-devel libev-devel pcre2-devel
+ pixman-devel uthash xcb-util-image-devel xcb-util-renderutil-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

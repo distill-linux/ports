@@ -1,0 +1,14 @@
+PORT_NAME="libjpeg-turbo"
+PORT_VERSION="3.1.4.1"
+PORT_RELEASE="1"
+PORT_DESC="Derivative of libjpeg which uses SIMD instructions"
+PORT_URL="https://libjpeg-turbo.org/"
+PORT_COMMIT="3.1.4.1"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="yasm"
+RUN_DEPS=""
+
+BUILD:
+cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

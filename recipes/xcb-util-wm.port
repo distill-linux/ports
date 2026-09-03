@@ -1,0 +1,14 @@
+PORT_NAME="xcb-util-wm"
+PORT_VERSION="0.4.2"
+PORT_RELEASE="1"
+PORT_DESC="Utility libraries for XC Binding - window-manager helpers for ICCCM"
+PORT_URL="https://xcb.freedesktop.org"
+PORT_COMMIT="0.4.2"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="m4 pkg-config"
+RUN_DEPS="libxcb-devel xcb-util-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

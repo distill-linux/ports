@@ -1,0 +1,14 @@
+PORT_NAME="automake"
+PORT_VERSION="1.16.5"
+PORT_RELEASE="1"
+PORT_DESC="GNU Standards-compliant Makefile generator"
+PORT_URL="https://www.gnu.org/software/automake"
+PORT_COMMIT="1.16.5"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="perl autoconf"
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

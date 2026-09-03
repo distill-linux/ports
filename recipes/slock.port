@@ -1,0 +1,13 @@
+PORT_NAME="slock"
+PORT_VERSION="1.7"
+PORT_RELEASE="1"
+PORT_DESC="Simple screen locker for X"
+PORT_URL="http://tools.suckless.org/slock"
+PORT_COMMIT="1.7"
+BUILD_SYSTEM="make"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libXrandr-devel"
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

@@ -1,0 +1,15 @@
+PORT_NAME="sway"
+PORT_VERSION="1.12"
+PORT_RELEASE="1"
+PORT_DESC="Tiling Wayland compositor compatible with i3"
+PORT_URL="https://swaywm.org"
+PORT_COMMIT="1.12"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config wayland-devel scdoc"
+RUN_DEPS="wlroots0.20-devel pcre2-devel json-c-devel pango-devel cairo-devel
+ gdk-pixbuf-devel libevdev-devel"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

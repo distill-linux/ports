@@ -1,0 +1,18 @@
+PORT_NAME="rxvt-unicode"
+PORT_VERSION="9.31"
+PORT_RELEASE="1"
+PORT_DESC="Terminal emulator supporting Xft fonts and Unicode"
+PORT_URL="http://software.schmorp.de/pkg/rxvt-unicode.html"
+PORT_COMMIT="9.31"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config $(vopt_if perl 'perl')"
+RUN_DEPS="xorgproto fontconfig-devel
+ libXrender-devel libXft-devel libSM-devel libXt-devel libptytty-devel
+ $(vopt_if gdk_pixbuf gdk-pixbuf-devel)
+ $(vopt_if perl perl)
+ $(vopt_if startup_notification startup-notification-devel)"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,14 @@
+PORT_NAME="cproc"
+PORT_VERSION="main"
+PORT_RELEASE="1"
+PORT_DESC="C11 compiler using QBE as backend written by Michael Forney"
+PORT_URL="https://github.com/michaelforney/cproc.git"
+PORT_COMMIT="main"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr
+make CC=clang
+make DESTDIR="$PKG_FAKEROOT" install

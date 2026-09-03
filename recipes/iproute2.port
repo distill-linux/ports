@@ -1,0 +1,15 @@
+PORT_NAME="iproute2"
+PORT_VERSION="7.1.0"
+PORT_RELEASE="1"
+PORT_DESC="IP Routing Utilities"
+PORT_URL="https://wiki.linuxfoundation.org/networking/iproute2"
+PORT_COMMIT="7.1.0"
+BUILD_SYSTEM="configure"
+BUILD_DEPS="pkg-config perl flex"
+RUN_DEPS="libfl-devel libmnl-devel db-devel iptables-devel elfutils-devel
+ libbpf-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

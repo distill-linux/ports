@@ -1,0 +1,13 @@
+PORT_NAME="giflib"
+PORT_VERSION="6.1.3"
+PORT_RELEASE="1"
+PORT_DESC="Library to handle, display and manipulate GIF images"
+PORT_URL="https://sourceforge.net/projects/giflib/"
+PORT_COMMIT="6.1.3"
+BUILD_SYSTEM="gnu-makefile"
+BUILD_DEPS="xmlto"
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

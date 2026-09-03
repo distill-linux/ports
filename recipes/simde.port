@@ -1,0 +1,14 @@
+PORT_NAME="simde"
+PORT_VERSION="0.8.2"
+PORT_RELEASE="1"
+PORT_DESC="Implementations of SIMD instruction sets"
+PORT_URL="https://github.com/simd-everywhere/simde"
+PORT_COMMIT="0.8.2"
+BUILD_SYSTEM="meson"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

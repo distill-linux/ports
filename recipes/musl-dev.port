@@ -1,0 +1,14 @@
+PORT_NAME="musl-dev"
+PORT_VERSION="1.2.5"
+PORT_RELEASE="1"
+PORT_DESC="The musl C standard library - development headers"
+PORT_URL="https://git.musl-libc.org/git/musl"
+PORT_COMMIT="1.2.5"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install-headers

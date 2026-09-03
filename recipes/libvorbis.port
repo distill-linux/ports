@@ -1,0 +1,14 @@
+PORT_NAME="libvorbis"
+PORT_VERSION="1.3.7"
+PORT_RELEASE="1"
+PORT_DESC="The Vorbis General Audio Compression Codec"
+PORT_URL="https://www.xiph.org/vorbis/"
+PORT_COMMIT="1.3.7"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libogg-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,14 @@
+PORT_NAME="wmenu"
+PORT_VERSION="0.1.8"
+PORT_RELEASE="1"
+PORT_DESC="Dynamic menu for Wayland (dmenu clone for wlroots)"
+PORT_URL="https://codeberg.org/adnano/wmenu.git"
+PORT_COMMIT="0.1.8"
+BUILD_SYSTEM="meson"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

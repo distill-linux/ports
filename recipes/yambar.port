@@ -1,0 +1,14 @@
+PORT_NAME="yambar"
+PORT_VERSION="1.10.0"
+PORT_RELEASE="1"
+PORT_DESC="Modular status panel library and daemon for Wayland and X11"
+PORT_URL="https://codeberg.org/dnkl/yambar.git"
+PORT_COMMIT="1.10.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

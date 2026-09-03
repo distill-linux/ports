@@ -1,0 +1,15 @@
+PORT_NAME="uxterm"
+PORT_VERSION="411"
+PORT_RELEASE="1"
+PORT_DESC="X Terminal Emulator"
+PORT_URL="https://invisible-island.net/xterm/"
+PORT_COMMIT="411"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libXaw-devel libXft-devel libutempter-devel libxkbfile-devel
+ ncurses-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

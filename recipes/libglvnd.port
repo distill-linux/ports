@@ -1,0 +1,14 @@
+PORT_NAME="libglvnd"
+PORT_VERSION="1.7.0"
+PORT_RELEASE="1"
+PORT_DESC="GL Vendor-Neutral Dispatch library"
+PORT_URL="https://gitlab.freedesktop.org/glvnd/libglvnd"
+PORT_COMMIT="1.7.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="libXext-devel libX11-devel xorgproto"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

@@ -1,0 +1,14 @@
+PORT_NAME="xclock"
+PORT_VERSION="1.2.1"
+PORT_RELEASE="1"
+PORT_DESC="Analog and digital clock for X"
+PORT_URL="http://www.x.org/archive/X11R6.8.1/doc/xclock.1.html"
+PORT_COMMIT="1.2.1"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config xorg-util-macros"
+RUN_DEPS="libXmu-devel libXaw-devel libxkbfile-devel libXft-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

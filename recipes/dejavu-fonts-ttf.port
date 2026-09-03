@@ -1,0 +1,13 @@
+PORT_NAME="dejavu-fonts-ttf"
+PORT_VERSION="2.37"
+PORT_RELEASE="1"
+PORT_DESC="DejaVu family of TrueType fonts"
+PORT_URL="https://dejavu-fonts.github.io/"
+PORT_COMMIT="2.37"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

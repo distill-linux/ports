@@ -1,0 +1,13 @@
+PORT_NAME="go"
+PORT_VERSION="1.26.5"
+PORT_RELEASE="1"
+PORT_DESC="Go Programming Language"
+PORT_URL="https://go.dev/"
+PORT_COMMIT="1.26.5"
+BUILD_SYSTEM="make"
+BUILD_DEPS="go${_bootstrap%.*}-bootstrap"
+RUN_DEPS=""
+
+BUILD:
+make CC=clang PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

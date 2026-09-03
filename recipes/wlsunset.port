@@ -1,0 +1,14 @@
+PORT_NAME="wlsunset"
+PORT_VERSION="0.4.0"
+PORT_RELEASE="1"
+PORT_DESC="Day/night gamma adjustments for Wayland compositors"
+PORT_URL="https://sr.ht/~kennylevinsen/wlsunset/"
+PORT_COMMIT="0.4.0"
+BUILD_SYSTEM="meson"
+BUILD_DEPS="scdoc pkg-config wayland-devel"
+RUN_DEPS="pkg-config wayland-devel wayland-protocols"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

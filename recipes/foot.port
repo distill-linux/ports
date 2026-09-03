@@ -1,0 +1,14 @@
+PORT_NAME="foot"
+PORT_VERSION="1.17.2"
+PORT_RELEASE="1"
+PORT_DESC="Fast, lightweight, and minimalistic Wayland terminal emulator"
+PORT_URL="https://codeberg.org/dnkl/foot.git"
+PORT_COMMIT="1.17.2"
+BUILD_SYSTEM="meson"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

@@ -1,0 +1,15 @@
+PORT_NAME="chrony"
+PORT_VERSION="4.8"
+PORT_RELEASE="1"
+PORT_DESC="Versatile implementation of the Network Time Protocol (NTP)"
+PORT_URL="https://chrony-project.org/"
+PORT_COMMIT="4.8"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="pkg-config"
+RUN_DEPS="gnutls-devel libcap-devel libedit-devel libseccomp-devel
+ nettle-devel pps-tools-devel"
+
+BUILD:
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
