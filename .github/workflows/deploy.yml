@@ -53,9 +53,9 @@ jobs:
             git remote add origin https://x-access-token:${{ secrets.REPO_DISPATCH_PAT || github.token }}@github.com/distill-linux/distill-linux.github.io.git
           }
           
-          # Copy packages and catalog to static/pkgs
-          mkdir -p /tmp/pages-repo/static/pkgs
-          cp -r packages/* /tmp/pages-repo/static/pkgs/
+          # Copy packages and catalog to static/ports
+          mkdir -p /tmp/pages-repo/static/ports
+          cp -r packages/* /tmp/pages-repo/static/ports/
           
           cd /tmp/pages-repo
           git add -A

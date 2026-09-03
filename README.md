@@ -9,7 +9,7 @@ Distill package management is split across dedicated repositories:
 - **[`ports`](https://github.com/distill-linux/ports)** (this repo): Official package recipes and repository catalog tooling.
 
 Official package repository catalog is published live at:
-**[https://distill-linux.github.io/pkgs/](https://distill-linux.github.io/pkgs/)**
+**[https://distill-linux.github.io/ports/](https://distill-linux.github.io/ports/)**
 
 ---
 
@@ -18,7 +18,7 @@ Official package repository catalog is published live at:
 ### In Distill Linux (`drop`):
 ```sh
 # Configure repository
-export DROP_REPO_URL="https://distill-linux.github.io/pkgs"
+export DROP_REPO_URL="https://distill-linux.github.io/ports"
 
 # Update package catalog
 drop update
