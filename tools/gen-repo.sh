@@ -73,14 +73,13 @@ for sdir in search_dirs:
                             break
             except Exception:
                 pass
-            if pname not in drop_files or drop_files[pname]["size"] == 0:
-                with open(fpath, "rb") as f:
-                    sha = hashlib.sha256(f.read()).hexdigest()
-                drop_files[pname] = {
-                    "filename": fname,
-                    "size": size,
-                    "sha256": sha,
-                }
+            with open(fpath, "rb") as f:
+                sha = hashlib.sha256(f.read()).hexdigest()
+            drop_files[pname] = {
+                "filename": fname,
+                "size": size,
+                "sha256": sha,
+            }
 
 pkg_map = {}
 
