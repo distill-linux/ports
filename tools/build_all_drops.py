@@ -50,6 +50,7 @@ alias_map = {
     "xcutsel": "xorg-apps",
     "fslsfonts": "xorg-apps",
     "luit": "xorg-apps",
+    "crio": "cri-o",
 }
 
 def get_port_recipe_meta(rpath):
