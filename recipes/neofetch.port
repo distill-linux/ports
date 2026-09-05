@@ -1,0 +1,14 @@
+PORT_NAME="neofetch"
+PORT_VERSION="7.1.0"
+PORT_RELEASE="1"
+PORT_DESC="CLI system information tool written in bash"
+PORT_URL="https://github.com/dylanaraps/neofetch"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="bash"
+
+BUILD:
+mkdir -p "$PKG_FAKEROOT/usr/bin" "$PKG_FAKEROOT/usr/share/man/man1"
+curl -sSL -o "$PKG_FAKEROOT/usr/bin/neofetch" https://raw.githubusercontent.com/dylanaraps/neofetch/7.1.0/neofetch
+chmod 755 "$PKG_FAKEROOT/usr/bin/neofetch"
+curl -sSL -o "$PKG_FAKEROOT/usr/share/man/man1/neofetch.1" https://raw.githubusercontent.com/dylanaraps/neofetch/7.1.0/neofetch.1

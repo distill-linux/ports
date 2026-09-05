@@ -1,0 +1,19 @@
+PORT_NAME="fastfetch"
+PORT_VERSION="2.67.1"
+PORT_RELEASE="1"
+PORT_DESC="Fast, highly customizable system information fetching tool"
+PORT_URL="https://github.com/fastfetch-cli/fastfetch"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="cmake pkg-config python3 samurai"
+RUN_DEPS="yyjson vulkan-loader libXrandr wayland libdrm glib dconf zlib dbus MesaLib"
+
+BUILD:
+cmake -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DENABLE_SYSTEM_YYJSON=OFF \
+    -DBUILD_FLASHFETCH=OFF \
+    -DINSTALL_LICENSE=OFF \
+    -DENABLE_QUICKJS=OFF
+cmake --build build
+DESTDIR="$PKG_FAKEROOT" cmake --install build

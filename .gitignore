@@ -17,3 +17,4 @@ usr/
 sumifetch/
 test_installer.exp
 common
+__pycache__/
