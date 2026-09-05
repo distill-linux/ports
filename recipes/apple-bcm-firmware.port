@@ -1,0 +1,34 @@
+PORT_NAME="apple-bcm-firmware"
+PORT_VERSION="14.0"
+PORT_RELEASE="1"
+PORT_DESC="Wi-Fi and Bluetooth Firmware from macOS Big Sur for T2 and M1 Macs"
+PORT_URL="https://github.com/NoaHimesaka1873/apple-bcm-firmware.git"
+PORT_ARCH="all"
+RUN_DEPS=""
+
+BUILD:
+# Direct port of Arch Linux T2 apple-bcm-firmware PKGBUILD
+# Sources:
+#   https://mirror.funami.tech/arch-mact2/firmware/bluetooth.tar.gz
+#   https://mirror.funami.tech/arch-mact2/firmware/wifi.tar.gz
+#   https://github.com/NoaHimesaka1873/asahi-installer.git
+
+mkdir -p src-downloads
+curl -sSL -o src-downloads/bluetooth.tar.gz https://mirror.funami.tech/arch-mact2/firmware/bluetooth.tar.gz
+curl -sSL -o src-downloads/wifi.tar.gz https://mirror.funami.tech/arch-mact2/firmware/wifi.tar.gz
+
+if [ ! -d "asahi-installer" ]; then
+    git clone https://github.com/NoaHimesaka1873/asahi-installer.git asahi-installer
+fi
+
+cd asahi-installer
+mkdir -p wifi bluetooth ../firmware-wifi ../firmware-bluetooth
+tar xf ../src-downloads/wifi.tar.gz --directory wifi/
+tar xf ../src-downloads/bluetooth.tar.gz --directory bluetooth/
+python3 -m asahi_firmware.wifi wifi ../firmware-wifi
+python3 -m asahi_firmware.bluetooth bluetooth ../firmware-bluetooth
+
+mkdir -p "$PKG_FAKEROOT/usr/lib/firmware"
+cd "$PKG_FAKEROOT/usr/lib/firmware"
+tar xf "$OLDPWD/../firmware-wifi/firmware.tar"
+tar xf "$OLDPWD/../firmware-bluetooth/firmware.tar"
