@@ -1,0 +1,10 @@
+PORT_NAME="distrobox"
+PORT_VERSION="1.8.1.2"
+PORT_RELEASE="1"
+PORT_DESC="Use any Linux distribution inside your terminal using Podman or Docker"
+PORT_URL="https://github.com/89luca89/distrobox.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="podman"
+
+BUILD:
+./install --prefix "$PKG_FAKEROOT/usr" 

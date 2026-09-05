@@ -1,0 +1,13 @@
+PORT_NAME="docker"
+PORT_VERSION="29.7.2"
+PORT_RELEASE="1"
+PORT_DESC="Pack, ship and run any application as a lightweight container"
+PORT_URL="https://github.com/moby/moby.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="containerd runc iptables ca-certificates"
+
+BUILD:
+mkdir -p "$PKG_FAKEROOT/usr/bin"
+# Docker CLI and dockerd packaging
+install -Dm755 bundles/dynbinary-daemon/dockerd "$PKG_FAKEROOT/usr/bin/dockerd"
+install -Dm755 bundles/dynbinary-daemon/docker-proxy "$PKG_FAKEROOT/usr/bin/docker-proxy" 

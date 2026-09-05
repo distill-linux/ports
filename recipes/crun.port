@@ -1,0 +1,12 @@
+PORT_NAME="crun"
+PORT_VERSION="1.29.1"
+PORT_RELEASE="1"
+PORT_DESC="Fast and lightweight fully compliant OCI container runtime in C"
+PORT_URL="https://github.com/containers/crun.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="libcap libseccomp yajl"
+
+BUILD:
+./autogen.sh && ./configure --prefix=/usr
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -1,0 +1,12 @@
+PORT_NAME="waydroid"
+PORT_VERSION="1.6.3"
+PORT_RELEASE="1"
+PORT_DESC="Container-based approach to boot a full Android system on Wayland"
+PORT_URL="https://github.com/waydroid/waydroid.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="python3 lxc iptables dnsmasq"
+
+BUILD:
+mkdir -p "$PKG_FAKEROOT/usr/lib/waydroid" "$PKG_FAKEROOT/usr/bin"
+cp -r tools data waydroid "$PKG_FAKEROOT/usr/lib/waydroid/"
+ln -sf /usr/lib/waydroid/waydroid "$PKG_FAKEROOT/usr/bin/waydroid" 

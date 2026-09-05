@@ -1,0 +1,12 @@
+PORT_NAME="libvirt"
+PORT_VERSION="12.6.0"
+PORT_RELEASE="1"
+PORT_DESC="Virtualization management toolkit and daemon for KVM, QEMU and LXC"
+PORT_URL="https://gitlab.com/libvirt/libvirt.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="qemu libxml2 yajl libnl gnutls iptables"
+
+BUILD:
+meson setup build --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

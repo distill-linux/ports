@@ -1,0 +1,11 @@
+PORT_NAME="lilipod"
+PORT_VERSION="0.4.1"
+PORT_RELEASE="1"
+PORT_DESC="Simple and lightweight container manager in C"
+PORT_URL="https://github.com/illiliti/lilipod.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="crun curl"
+
+BUILD:
+make PREFIX=/usr
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install

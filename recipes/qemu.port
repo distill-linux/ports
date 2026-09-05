@@ -1,0 +1,12 @@
+PORT_NAME="qemu"
+PORT_VERSION="11.1.0"
+PORT_RELEASE="1"
+PORT_DESC="Generic machine emulator and virtualizer with KVM kernel acceleration"
+PORT_URL="https://github.com/qemu/qemu.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="pixman libglib-devel libepoxy zlib libcap-ng libseccomp alsa-lib"
+
+BUILD:
+./configure --prefix=/usr --sysconfdir=/etc --target-list=x86_64-softmmu,x86_64-linux-user --enable-kvm
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

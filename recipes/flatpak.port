@@ -1,0 +1,12 @@
+PORT_NAME="flatpak"
+PORT_VERSION="1.18.1"
+PORT_RELEASE="1"
+PORT_DESC="Application sandboxing and distribution framework for desktop apps"
+PORT_URL="https://github.com/flatpak/flatpak.git"
+PORT_ARCH="x86_64"
+RUN_DEPS="bubblewrap ostree libsoup libarchive json-glib polkit libseccomp"
+
+BUILD:
+meson setup build --prefix=/usr --buildtype=release -Dsystem_bubblewrap=bwrap
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install
