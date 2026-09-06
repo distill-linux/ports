@@ -18,13 +18,14 @@ Configure the following default endpoints on the system:
    - **Catalog Index**: `https://distill-linux.github.io/ports/index.tsv`
    - **Package Download Format**: `https://distill-linux.github.io/ports/<name>-<version>.drop`
    - **Default Config File**: Create `/etc/drop/repos.conf` on the rootfs:
-     ```text
-     https://distill-linux.github.io/ports
+     ```ini
+     # /etc/drop/repos.conf
+     repo = https://distill-linux.github.io/ports
      ```
 
 2. **Official Source Recipes Repository (for `sink`)**:
    - **Git URL**: `https://github.com/distill-linux/ports.git`
-   - **Recipe Path**: `recipes/*.port` (contains 258 validated `.port` recipes).
+   - **Recipe Path**: `recipes/*.port` (contains 260 validated `.port` recipes).
 
 3. **Package Manager Code Repositories**:
    - **`drop` (Binary Client)**: `https://github.com/distill-linux/drop.git` (Pure C99 binary package manager, SHA-256 verification, local DB at `/var/db/drop/ports/<pkg>/.PORT`).
