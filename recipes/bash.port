@@ -1,0 +1,13 @@
+PORT_NAME="bash"
+PORT_VERSION="5.3"
+PORT_RELEASE="1"
+PORT_DESC="GNU Bourne-Again Shell"
+PORT_URL="https://www.gnu.org/software/bash/"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr --without-bash-malloc
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

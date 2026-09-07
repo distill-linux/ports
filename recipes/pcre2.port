@@ -1,0 +1,13 @@
+PORT_NAME="pcre2"
+PORT_VERSION="10.47"
+PORT_RELEASE="1"
+PORT_DESC="Perl Compatible Regular Expressions 2"
+PORT_URL="https://www.pcre.org"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr --enable-pcre2-16 --enable-pcre2-32 --enable-jit
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

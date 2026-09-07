@@ -1,0 +1,12 @@
+PORT_NAME="git"
+PORT_VERSION="2.55.0"
+PORT_RELEASE="1"
+PORT_DESC="Fast, scalable, distributed revision control system"
+PORT_URL="https://git-scm.com"
+BUILD_SYSTEM="custom"
+BUILD_DEPS="curl pcre2 zlib"
+RUN_DEPS="curl pcre2 zlib"
+
+BUILD:
+make prefix=/usr NO_TCLTK=YesPlease NO_GETTEXT=YesPlease
+make prefix=/usr NO_TCLTK=YesPlease NO_GETTEXT=YesPlease DESTDIR="$PKG_FAKEROOT" install

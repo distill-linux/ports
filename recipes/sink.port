@@ -6,7 +6,7 @@ PORT_URL="https://github.com/distill-linux/sink.git"
 PORT_COMMIT="main"
 BUILD_SYSTEM="samu"
 BUILD_DEPS="samurai"
-RUN_DEPS="libgit2 curl"
+RUN_DEPS="git curl"
 
 BUILD:
 samu

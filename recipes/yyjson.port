@@ -1,0 +1,16 @@
+PORT_NAME="yyjson"
+PORT_VERSION="0.12.0"
+PORT_RELEASE="1"
+PORT_DESC="Fast JSON library in ANSI C"
+PORT_URL="https://github.com/ibireme/yyjson"
+BUILD_SYSTEM="cmake"
+BUILD_DEPS="cmake"
+RUN_DEPS=""
+
+BUILD:
+cmake -B build -G Ninja \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_SHARED_LIBS=ON
+cmake --build build
+DESTDIR="$PKG_FAKEROOT" cmake --install build

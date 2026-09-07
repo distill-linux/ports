@@ -1,0 +1,14 @@
+PORT_NAME="make"
+PORT_VERSION="4.4.1"
+PORT_RELEASE="1"
+PORT_DESC="GNU Make utility"
+PORT_URL="https://www.gnu.org/software/make/"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr --disable-nls
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
+ln -sf make "$PKG_FAKEROOT/usr/bin/gmake"

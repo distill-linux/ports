@@ -1,0 +1,13 @@
+PORT_NAME="elfutils"
+PORT_VERSION="0.191"
+PORT_RELEASE="1"
+PORT_DESC="Utilities and libraries to handle ELF object files"
+PORT_URL="https://sourceware.org/elfutils/"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="zlib"
+RUN_DEPS="libelf"
+
+BUILD:
+./configure --prefix=/usr --disable-nls
+make -C libelf -j$(nproc)
+make -C libelf DESTDIR="$PKG_FAKEROOT" install

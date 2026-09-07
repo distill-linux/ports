@@ -1,0 +1,13 @@
+PORT_NAME="kmod"
+PORT_VERSION="32"
+PORT_RELEASE="1"
+PORT_DESC="Linux kernel module handling tools"
+PORT_URL="https://kernel.org/pub/linux/utils/kernel/kmod/"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="zlib"
+RUN_DEPS="zlib"
+
+BUILD:
+./configure --prefix=/usr --sysconfdir=/etc --disable-manpages --with-zlib
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

@@ -11,6 +11,7 @@ import os
 import glob
 import tarfile
 import hashlib
+import time
 
 repo_dir = sys.argv[1]
 recipes_dir = sys.argv[2] if len(sys.argv) > 2 else "recipes"
@@ -59,6 +60,8 @@ for sdir in search_dirs:
         if fname.endswith(".drop"):
             fpath = os.path.join(sdir, fname)
             size = os.path.getsize(fpath)
+            d_mtime = os.path.getmtime(fpath)
+            d_date = time.strftime('%Y-%m-%d', time.gmtime(d_mtime))
             pname = fname.split("-")[0]
             try:
                 with tarfile.open(fpath, "r:gz") as tar:
@@ -69,7 +72,15 @@ for sdir in search_dirs:
                                 for line in fobj.read().decode("utf-8", errors="replace").splitlines():
                                     if line.startswith("PORT_NAME=") or line.startswith("NAME="):
                                         pname = line.split("=", 1)[1].strip().strip('"').strip("'")
-                                        break
+                                    elif line.startswith("PORT_DATE=") or line.startswith("DATE="):
+                                        d_date = line.split("=", 1)[1].strip().strip('"').strip("'")
+                                    elif line.startswith("TIMESTAMP="):
+                                        try:
+                                            ts = int(line.split("=", 1)[1].strip().strip('"').strip("'"))
+                                            if ts > 0:
+                                                d_date = time.strftime('%Y-%m-%d', time.gmtime(ts))
+                                        except Exception:
+                                            pass
                             break
             except Exception:
                 pass
@@ -79,6 +90,7 @@ for sdir in search_dirs:
                 "filename": fname,
                 "size": size,
                 "sha256": sha,
+                "date": d_date,
             }
 
 pkg_map = {}
@@ -102,6 +114,8 @@ if os.path.exists(recipes_dir):
             desc = meta.get("PORT_DESC") or f"{name} package for Distill Linux"
             deps = meta.get("RUN_DEPS") or meta.get("DEPENDS") or ""
             url = meta.get("PORT_URL") or ""
+            r_mtime = os.path.getmtime(rpath)
+            r_date = meta.get("PORT_DATE") or meta.get("DATE") or time.strftime('%Y-%m-%d', time.gmtime(r_mtime))
             pkg_map[name] = {
                 "name": name,
                 "version": ver,
@@ -109,6 +123,7 @@ if os.path.exists(recipes_dir):
                 "desc": desc,
                 "deps": deps,
                 "url": url,
+                "date": r_date,
             }
         except Exception:
             pass
@@ -123,6 +138,7 @@ for pname, dinfo in drop_files.items():
             "desc": f"{pname} package for Distill Linux",
             "deps": "",
             "url": f"https://github.com/distill-linux/{pname}",
+            "date": dinfo.get("date", "2026-09-02"),
         }
 
 packages = []
@@ -136,6 +152,8 @@ for name in sorted(pkg_map.keys()):
     elif src_url.endswith(".git"):
         src_url = src_url[:-4]
 
+    pkg_date = (dinfo and dinfo.get("date")) or p.get("date") or "2026-09-02"
+
     packages.append({
         "name": name,
         "version": p["version"],
@@ -147,6 +165,7 @@ for name in sorted(pkg_map.keys()):
         "filename": dinfo["filename"] if dinfo else f"{name}-{p['version']}.drop",
         "size": dinfo["size"] if dinfo else 0,
         "sha256": dinfo["sha256"] if dinfo else "",
+        "date": pkg_date,
     })
 
 # Write index.tsv
@@ -176,7 +195,7 @@ for p in packages:
         pkg_cell = f'''<a href="{p['filename']}" download style="font-weight: bold; color: #aa2022;">{p['filename']}</a><br>
                 <span style="font-size: 0.8em; color: #666;">prebuilt package</span>'''
 
-    row = f'''        <tr class="pkg-row" data-name="{p['name']}" data-desc="{desc_lower}" data-date="2026-09-02" data-size="{p['size']}">
+    row = f'''        <tr class="pkg-row" data-name="{p['name']}" data-desc="{desc_lower}" data-date="{p['date']}" data-size="{p['size']}">
             <td><a class="pkg-name" href="{p['src_url']}" target="_blank" rel="noopener" style="color: #aa2022; text-decoration: none;" title="View source code">{p['name']}</a></td>
             <td><span class="pkg-tag">{p['version']}-{p['release']}</span></td>
             <td>
@@ -184,7 +203,7 @@ for p in packages:
                 <div style="margin-top: 0.3em;"><code class="pkg-cmd" title="Click to copy">drop in {p['name']}</code></div>
             </td>
             <td class="pkg-meta">distill-core</td>
-            <td class="pkg-meta">2026-09-02 (UTC)</td>
+            <td class="pkg-meta">{p['date']} (UTC)</td>
             <td>
                 {pkg_cell}
             </td>

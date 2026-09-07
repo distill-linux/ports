@@ -1,0 +1,14 @@
+PORT_NAME="bison"
+PORT_VERSION="3.8.2"
+PORT_RELEASE="1"
+PORT_DESC="GNU general-purpose parser generator"
+PORT_URL="https://www.gnu.org/software/bison/"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="m4"
+RUN_DEPS="m4"
+
+BUILD:
+./configure --prefix=/usr --disable-nls
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
+ln -sf bison "$PKG_FAKEROOT/usr/bin/yacc"
