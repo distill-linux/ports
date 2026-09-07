@@ -1,0 +1,22 @@
+PORT_NAME="gcompat"
+PORT_VERSION="1.1.0"
+PORT_RELEASE="1"
+PORT_DESC="The GNU C Library compatibility layer for musl"
+PORT_URL="https://github.com/Stantheman/gcompat"
+PORT_COMMIT="master"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+make LINKER_PATH=/lib/ld-musl-x86_64.so.1 LOADER_NAME=ld-linux-x86-64.so.2 WITH_OBSTACK=no
+make DESTDIR="$PKG_FAKEROOT" LINKER_PATH=/lib/ld-musl-x86_64.so.1 LOADER_NAME=ld-linux-x86-64.so.2 install
+install -d "$PKG_FAKEROOT/lib64" "$PKG_FAKEROOT/usr/lib" "$PKG_FAKEROOT/usr/lib64"
+ln -sf /lib/ld-linux-x86-64.so.2 "$PKG_FAKEROOT/lib64/ld-linux-x86-64.so.2"
+ln -sf /lib/ld-linux-x86-64.so.2 "$PKG_FAKEROOT/usr/lib64/ld-linux-x86-64.so.2"
+ln -sf /lib/libgcompat.so.0 "$PKG_FAKEROOT/usr/lib/libgcompat.so.0"
+ln -sf libgcompat.so.0 "$PKG_FAKEROOT/usr/lib/libgcompat.so"
+for f in libc.so.6 libcrypt.so.1 libm.so.6 libpthread.so.0 libresolv.so.2 librt.so.1 libutil.so.1; do
+    ln -sf libgcompat.so.0 "$PKG_FAKEROOT/lib/$f"
+    ln -sf /lib/$f "$PKG_FAKEROOT/usr/lib/$f"
+done
