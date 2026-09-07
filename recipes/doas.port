@@ -1,0 +1,27 @@
+PORT_NAME="doas"
+PORT_VERSION="6.8.2"
+PORT_RELEASE="1"
+PORT_DESC="Execute commands as another user (OpenBSD doas replacement for sudo)"
+PORT_URL="https://github.com/Duncaen/OpenDoas"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="configure"
+BUILD_DEPS="byacc make clang"
+RUN_DEPS=""
+
+BUILD:
+if [ ! -d "OpenDoas" ]; then
+    git clone --depth 1 -b v6.8.2 https://github.com/Duncaen/OpenDoas.git OpenDoas
+fi
+cd OpenDoas
+./configure --prefix=/usr --sysconfdir=/etc --without-pam --with-timestamp
+make CC="${CC:-clang}"
+make DESTDIR="$PKG_FAKEROOT" install
+ln -sf doas "$PKG_FAKEROOT/usr/bin/sudo"
+mkdir -p "$PKG_FAKEROOT/etc"
+cat > "$PKG_FAKEROOT/etc/doas.conf" <<'CONF'
+# /etc/doas.conf: Configuration for doas
+# Permit members of group wheel to execute commands as root
+permit persist :wheel
+CONF
+chmod 0400 "$PKG_FAKEROOT/etc/doas.conf"
+chmod 4755 "$PKG_FAKEROOT/usr/bin/doas"
