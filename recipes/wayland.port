@@ -6,7 +6,7 @@ PORT_URL="https://wayland.freedesktop.org/"
 PORT_COMMIT="1.26.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="flex pkg-config"
-RUN_DEPS="expat-devel libffi-devel libfl-devel libxml2-devel"
+RUN_DEPS=""
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

@@ -6,7 +6,7 @@ PORT_URL="https://www.khronos.org/vulkan/"
 PORT_COMMIT="1.4.350.1"
 BUILD_SYSTEM="cmake"
 BUILD_DEPS="python3 pkg-config"
-RUN_DEPS="Vulkan-Headers libxcb-devel libXrandr-devel wayland-devel"
+RUN_DEPS=""
 
 BUILD:
 cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release

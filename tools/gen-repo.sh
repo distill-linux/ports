@@ -62,6 +62,7 @@ for sdir in search_dirs:
             size = os.path.getsize(fpath)
             d_mtime = os.path.getmtime(fpath)
             d_date = time.strftime('%Y-%m-%d', time.gmtime(d_mtime))
+            d_opt_deps = ""
             pname = fname.split("-")[0]
             try:
                 with tarfile.open(fpath, "r:gz") as tar:
@@ -74,6 +75,8 @@ for sdir in search_dirs:
                                         pname = line.split("=", 1)[1].strip().strip('"').strip("'")
                                     elif line.startswith("PORT_DATE=") or line.startswith("DATE="):
                                         d_date = line.split("=", 1)[1].strip().strip('"').strip("'")
+                                    elif line.startswith("OPT_DEPS=") or line.startswith("OPTIONAL_DEPS="):
+                                        d_opt_deps = line.split("=", 1)[1].strip().strip('"').strip("'")
                                     elif line.startswith("TIMESTAMP="):
                                         try:
                                             ts = int(line.split("=", 1)[1].strip().strip('"').strip("'"))
@@ -91,6 +94,7 @@ for sdir in search_dirs:
                 "size": size,
                 "sha256": sha,
                 "date": d_date,
+                "opt_deps": d_opt_deps,
             }
 
 pkg_map = {}
@@ -113,6 +117,7 @@ if os.path.exists(recipes_dir):
             rel = meta.get("PORT_RELEASE") or "1"
             desc = meta.get("PORT_DESC") or f"{name} package for Distill Linux"
             deps = meta.get("RUN_DEPS") or meta.get("DEPENDS") or ""
+            opt_deps = meta.get("OPT_DEPS") or meta.get("OPTIONAL_DEPS") or ""
             url = meta.get("PORT_URL") or ""
             r_mtime = os.path.getmtime(rpath)
             r_date = meta.get("PORT_DATE") or meta.get("DATE") or time.strftime('%Y-%m-%d', time.gmtime(r_mtime))
@@ -122,6 +127,7 @@ if os.path.exists(recipes_dir):
                 "release": rel,
                 "desc": desc,
                 "deps": deps,
+                "opt_deps": opt_deps,
                 "url": url,
                 "date": r_date,
             }
@@ -137,6 +143,7 @@ for pname, dinfo in drop_files.items():
             "release": "1",
             "desc": f"{pname} package for Distill Linux",
             "deps": "",
+            "opt_deps": dinfo.get("opt_deps", ""),
             "url": f"https://github.com/distill-linux/{pname}",
             "date": dinfo.get("date", "2026-09-02"),
         }
@@ -153,6 +160,7 @@ for name in sorted(pkg_map.keys()):
         src_url = src_url[:-4]
 
     pkg_date = (dinfo and dinfo.get("date")) or p.get("date") or "2026-09-02"
+    pkg_opt_deps = p.get("opt_deps") or (dinfo and dinfo.get("opt_deps")) or ""
 
     packages.append({
         "name": name,
@@ -160,6 +168,7 @@ for name in sorted(pkg_map.keys()):
         "release": p["release"],
         "desc": p["desc"],
         "deps": p["deps"],
+        "opt_deps": pkg_opt_deps,
         "src_url": src_url,
         "has_drop": dinfo is not None,
         "filename": dinfo["filename"] if dinfo else f"{name}-{p['version']}.drop",
@@ -170,9 +179,9 @@ for name in sorted(pkg_map.keys()):
 
 # Write index.tsv
 with open(tsv_path, "w", encoding="utf-8") as f:
-    f.write("# Distill Linux Package Catalog\n# NAME\tVERSION\tSHA256\tSIZE\tFILENAME\tDEPENDS\n")
+    f.write("# Distill Linux Package Catalog\n# NAME\tVERSION\tSHA256\tSIZE\tFILENAME\tDEPENDS\tOPT_DEPS\n")
     for p in packages:
-        f.write(f"{p['name']}\t{p['version']}\t{p['sha256']}\t{p['size']}\t{p['filename']}\t{p['deps']}\n")
+        f.write(f"{p['name']}\t{p['version']}\t{p['sha256']}\t{p['size']}\t{p['filename']}\t{p['deps']}\t{p['opt_deps']}\n")
 
 # Format human size
 def human_size(n):

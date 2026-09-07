@@ -5,7 +5,8 @@ PORT_DESC="Fast, highly customizable system information fetching tool"
 PORT_URL="https://github.com/fastfetch-cli/fastfetch"
 BUILD_SYSTEM="cmake"
 BUILD_DEPS="cmake pkg-config python3 samurai"
-RUN_DEPS="yyjson vulkan-loader libXrandr wayland libdrm glib dconf zlib dbus MesaLib"
+RUN_DEPS="yyjson"
+OPT_DEPS="vulkan-loader libXrandr wayland libdrm dbus zlib mesa"
 
 BUILD:
 cmake -B build -G Ninja \

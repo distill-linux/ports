@@ -6,7 +6,7 @@ PORT_URL="https://dri.freedesktop.org/"
 PORT_COMMIT="2.4.134"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config python3-docutils"
-RUN_DEPS="eudev-libudev-devel libpciaccess-devel"
+RUN_DEPS=""
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release
