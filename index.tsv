@@ -71,6 +71,7 @@ freetype	2.14.3	b46eef185109f7cc553a94dbbcab6eb445021dd399471795d7957ab21a3a439d
 fribidi	1.0.16	f07523eb1853c62f156469cb080262f34a5c93143b1f238708697494a6e9b26b	32494	fribidi-1.0.16.drop	
 fslsfonts	1.0	2bc1d2ce8a642f55051bb8c6c2c011b01fa442c5f354cb1711fecdb812b5f388	276	fslsfonts-1.0.drop	
 fuzzel	1.14.1	94871d3c1ae0f7406bfa0a14d211b4dc6d5b375d3ff650cf106aad4b9ce9a344	125749	fuzzel-1.14.1.drop	fcft-devel libresvg-devel libpng-devel
+gcc	13.2.1	8eb8523e116a0b5514f282783d7109e1433e488a8fccc1466910139ad3c73c38	49726407	gcc-13.2.1.drop	binutils musl-dev
 giflib	6.1.3	a9053cda8af1d91871a97ae9fb34ee98476fde1abe1b0b64720e3257a13f84f5	48656	giflib-6.1.3.drop	
 git	2.55.0	9b50fc7b4b7168b43e58a67d5e4eb444eef5a58e2ed5bef3955816215641c7dd	20745757	git-2.55.0.drop	curl pcre2 zlib
 glslang	16.3.0	067bdc069496b6449b8d63959b37ebcf7aca30f56c0c9f9602a47667ea8aabaa	3344300	glslang-16.3.0.drop	SPIRV-Tools-devel
@@ -182,6 +183,7 @@ qbe	1.1	c7b87def58657fa2d19a98367c584ac56279002a9950d0b2413fc457fbada92d	113870	
 qemu	11.1.0	d267a8b262d7501798415377ca8780cd7bb6de461439db4ab07f1d26933f7fde	346	qemu-11.1.0.drop	pixman libglib-devel libepoxy zlib libcap-ng libseccomp alsa-lib
 river	0.3.7	04f95d1a782ce3c508223b4ad72e799d8cd439cdc567eed47118c0371de0126e	620901	river-0.3.7.drop	wlroots0.18-devel libevdev-devel pixman-devel
 rust	1.78.0	e584abc120200c20f95f3de080a7bc93843a78816597f48297825ff399edd701	95977977	rust-1.78.0.drop	cargo lld
+rustc-bin	1.0	6fcff2a20bd91069b45e72107fde1bbe596b51a8045426ac3fbe0365545bf402	396	rustc-bin-1.78.0.drop	
 rustup	1.29.1	edb3a8062745f65869149dcd8fe24bfd727009027b38aa4f431f3b67947a84f2	8192532	rustup-1.29.1.drop	
 rxvt-unicode	9.31	aa619e3a07165df1231c0d5ef32ef95b3c9c0724fbb4bd7687c6faa9c1cd2183	1383967	rxvt-unicode-9.31.drop	xorgproto fontconfig-devel
 samurai	1.3	8a0b2a4006d9c80f96ea973bedad05a04e588a8de51a9de0b94e195b11f12831	27965	samurai-1.2.drop	

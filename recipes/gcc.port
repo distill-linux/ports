@@ -1,0 +1,17 @@
+PORT_NAME="gcc"
+PORT_VERSION="13.2.1"
+PORT_RELEASE="1"
+PORT_DESC="The GNU Compiler Collection (C compiler and runtime)"
+PORT_URL="https://gcc.gnu.org/"
+PORT_COMMIT="releases/gcc-13.2.0"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="binutils musl-dev gmp mpfr mpc isl zlib"
+RUN_DEPS="binutils musl-dev"
+
+BUILD:
+./configure --prefix=/usr --enable-languages=c,c++ --disable-multilib --disable-werror --enable-default-pie --enable-default-ssp --disable-nls
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
+find "$PKG_FAKEROOT/usr/bin" -type f -exec strip -s {} + 2>/dev/null || true
+find "$PKG_FAKEROOT/usr/lib" -type f -name "*.so*" -exec strip -s {} + 2>/dev/null || true
+find "$PKG_FAKEROOT/usr/libexec" -type f -exec strip -s {} + 2>/dev/null || true
