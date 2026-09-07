@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/proto/xcbproto"
 PORT_COMMIT="1.17.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="python3 automake"
-RUN_DEPS="libxml2"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

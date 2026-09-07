@@ -6,9 +6,7 @@ PORT_URL="https://btrfs.wiki.kernel.org/index.php/Main_Page"
 PORT_COMMIT="6.11"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkgconf python3-Sphinx python3-sphinx_rtd_theme"
-RUN_DEPS="acl-devel libzstd-devel lzo-devel libblkid-devel libuuid-devel
- eudev-libudev-devel zlib-devel
- $(vopt_if e2fs 'e2fsprogs-devel') $(vopt_if reiserfs 'reiserfsprogs')"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

@@ -6,7 +6,7 @@ PORT_URL="https://www.rodsbooks.com/gdisk/"
 PORT_COMMIT="1.0.10"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS=""
-RUN_DEPS="ncurses-devel popt-devel libuuid-devel"
+RUN_DEPS=""
 
 BUILD:
 make CC=clang PREFIX=/usr

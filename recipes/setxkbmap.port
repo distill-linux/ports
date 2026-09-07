@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/app/setxkbmap"
 PORT_COMMIT="1.3.4"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libX11-devel libxkbfile-devel libXrandr-devel"
+RUN_DEPS="libX11 libXrandr"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

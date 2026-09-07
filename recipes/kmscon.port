@@ -6,8 +6,7 @@ PORT_URL="https://github.com/kmscon/kmscon"
 PORT_COMMIT="9.3.4"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config docbook-xsl xkeyboard-config libxslt zlib-devel"
-RUN_DEPS="MesaLib-devel pango-devel libtsm-devel libxkbcommon-devel
- eudev-libudev-devel libdrm-devel libgbm-devel"
+RUN_DEPS="pango libxkbcommon libdrm"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

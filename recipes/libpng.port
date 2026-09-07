@@ -6,7 +6,7 @@ PORT_URL="http://www.libpng.org/pub/png/libpng.html"
 PORT_COMMIT="1.6.58"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS=""
-RUN_DEPS="zlib-devel"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

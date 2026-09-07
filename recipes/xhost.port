@@ -6,7 +6,7 @@ PORT_URL="http://xorg.freedesktop.org"
 PORT_COMMIT="1.0.10"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config gettext"
-RUN_DEPS="libX11-devel libXmu-devel"
+RUN_DEPS="libX11 libXmu"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

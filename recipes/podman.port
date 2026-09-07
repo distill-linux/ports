@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Tool and library for managing OCI containers and pods without a daemon"
 PORT_URL="https://github.com/containers/podman.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="crun conmon cni-plugins libseccomp iptables"
+RUN_DEPS="crun"
 
 BUILD:
 make -j$(nproc) PREFIX=/usr

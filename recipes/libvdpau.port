@@ -6,7 +6,7 @@ PORT_URL="https://freedesktop.org/wiki/Software/VDPAU/"
 PORT_COMMIT="1.5"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXext-devel xorgproto"
+RUN_DEPS="libXext"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

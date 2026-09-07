@@ -6,8 +6,7 @@ PORT_URL="https://sourceware.org/lvm2/"
 PORT_COMMIT="2.03.29"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="eudev-libudev-devel libaio-devel libblkid-devel
- readline-devel thin-provisioning-tools"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

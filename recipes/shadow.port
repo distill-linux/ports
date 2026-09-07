@@ -6,7 +6,7 @@ PORT_URL="https://github.com/shadow-maint/shadow"
 PORT_COMMIT="4.8.1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="libtool"
-RUN_DEPS="acl-devel pam-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

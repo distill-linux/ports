@@ -6,7 +6,7 @@ PORT_URL="http://xorg.freedesktop.org"
 PORT_COMMIT="1.1.2"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXt-devel libXmu-devel libXaw-devel xbitmaps"
+RUN_DEPS="libXt libXmu libXaw"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

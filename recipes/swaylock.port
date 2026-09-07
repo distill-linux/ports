@@ -6,8 +6,7 @@ PORT_URL="https://github.com/swaywm/swaylock"
 PORT_COMMIT="1.8.6"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config wayland-devel scdoc git"
-RUN_DEPS="wayland-protocols cairo-devel gdk-pixbuf-devel pam-devel
- libxkbcommon-devel wayland-devel"
+RUN_DEPS="cairo libxkbcommon wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

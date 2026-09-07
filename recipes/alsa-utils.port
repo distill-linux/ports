@@ -6,7 +6,7 @@ PORT_URL="https://www.alsa-project.org/wiki/Main_Page"
 PORT_COMMIT="1.2.16"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config xmlto"
-RUN_DEPS="libsamplerate-devel ncurses-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

@@ -6,7 +6,7 @@ PORT_URL="https://github.com/bugaevc/wl-clipboard"
 PORT_COMMIT="2.3.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="wayland-devel pkg-config"
-RUN_DEPS="wayland-protocols wayland-devel"
+RUN_DEPS="wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

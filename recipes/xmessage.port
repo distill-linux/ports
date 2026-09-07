@@ -6,7 +6,7 @@ PORT_URL="http://xorg.freedesktop.org"
 PORT_COMMIT="1.0.7"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXaw-devel"
+RUN_DEPS="libXaw"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

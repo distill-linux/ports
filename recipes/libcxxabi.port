@@ -9,8 +9,7 @@ BUILD_DEPS="perl python3 zlib-devel libffi-devel swig python3-Sphinx
  python3-sphinx-automodapi python3-sphinx-markdown-tables python3-yaml pkg-config
  python3-mdit-py-plugins python3-MyST-Parser python3-markdown-it
  patchelf $(vopt_if graphviz graphviz)"
-RUN_DEPS="python3-devel zlib-devel elfutils-devel libffi-devel libedit-devel
- libxml2-devel binutils-devel z3-devel lua54-devel"
+RUN_DEPS="python3 zlib elfutils binutils"
 
 BUILD:
 cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release

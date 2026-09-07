@@ -6,7 +6,7 @@ PORT_URL="http://e2fsprogs.sourceforge.net/"
 PORT_COMMIT="1.47.2"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="texinfo pkg-config"
-RUN_DEPS="libuuid-devel libblkid-devel fuse-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

@@ -6,8 +6,7 @@ PORT_URL="http://xfs.org/index.php/Main_Page"
 PORT_COMMIT="6.19.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="gettext pkg-config"
-RUN_DEPS="libblkid-devel libedit-devel inih-devel liburcu-devel
- libuuid-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

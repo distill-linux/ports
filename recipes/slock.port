@@ -6,7 +6,7 @@ PORT_URL="http://tools.suckless.org/slock"
 PORT_COMMIT="1.7"
 BUILD_SYSTEM="make"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXrandr-devel"
+RUN_DEPS="libXrandr"
 
 BUILD:
 make CC=clang PREFIX=/usr

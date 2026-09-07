@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Virtualization management toolkit and daemon for KVM, QEMU and LXC"
 PORT_URL="https://gitlab.com/libvirt/libvirt.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="qemu libxml2 yajl libnl gnutls iptables"
+RUN_DEPS="qemu"
 
 BUILD:
 meson setup build --prefix=/usr --sysconfdir=/etc --localstatedir=/var

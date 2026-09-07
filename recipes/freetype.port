@@ -6,7 +6,7 @@ PORT_URL="https://www.freetype.org/"
 PORT_COMMIT="2.14.3"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="bzip2-devel libpng-devel brotli-devel"
+RUN_DEPS="libpng"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

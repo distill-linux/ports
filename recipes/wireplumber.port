@@ -6,7 +6,7 @@ PORT_URL="https://pipewire.pages.freedesktop.org/wireplumber"
 PORT_COMMIT="0.5.15"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config glib-devel python3-lxml doxygen gettext"
-RUN_DEPS="libglib-devel pipewire-devel lua54-devel elogind-devel"
+RUN_DEPS="pipewire"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

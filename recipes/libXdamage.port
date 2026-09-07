@@ -6,7 +6,7 @@ PORT_URL="https://wiki.freedesktop.org/xorg/"
 PORT_COMMIT="1.1.7"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="xorgproto libXfixes-devel"
+RUN_DEPS="libXfixes"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

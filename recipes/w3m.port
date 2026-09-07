@@ -6,8 +6,7 @@ PORT_URL="https://sr.ht/~rkta/w3m/"
 PORT_COMMIT="0.5.6"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config gc-devel perl gettext nkf"
-RUN_DEPS="zlib-devel ncurses-devel gc-devel openssl-devel imlib2-devel
- libX11-devel"
+RUN_DEPS="zlib openssl libX11"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

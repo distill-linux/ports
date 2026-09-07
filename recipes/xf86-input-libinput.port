@@ -6,7 +6,7 @@ PORT_URL="https://xorg.freedesktop.org/"
 PORT_COMMIT="1.5.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libinput-devel xorg-server-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

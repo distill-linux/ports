@@ -6,8 +6,7 @@ PORT_URL="https://chrony-project.org/"
 PORT_COMMIT="4.8"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="gnutls-devel libcap-devel libedit-devel libseccomp-devel
- nettle-devel pps-tools-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

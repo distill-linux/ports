@@ -6,7 +6,7 @@ PORT_URL="https://www.hjdskes.nl/projects/cage/"
 PORT_COMMIT="0.3.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config wayland-devel scdoc"
-RUN_DEPS="libxkbcommon-devel wlroots0.20-devel"
+RUN_DEPS="libxkbcommon"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

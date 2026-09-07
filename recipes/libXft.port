@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxft"
 PORT_COMMIT="2.3.9"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="xorgproto libXrender-devel freetype-devel fontconfig-devel"
+RUN_DEPS="libXrender freetype fontconfig"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

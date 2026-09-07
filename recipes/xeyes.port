@@ -6,7 +6,7 @@ PORT_URL="http://www.x.org/archive/X11R6.8.1/doc/xeyes.1.html"
 PORT_COMMIT="1.3.1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config xorg-util-macros"
-RUN_DEPS="libXmu-devel libXt-devel libXrender-devel libXi-devel"
+RUN_DEPS="libXmu libXt libXrender libXi"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

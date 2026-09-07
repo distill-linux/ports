@@ -6,8 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/app/xdpyinfo"
 PORT_COMMIT="1.4.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXext-devel libXtst-devel
- libXrender-devel libXcomposite-devel libXinerama-devel"
+RUN_DEPS="libXext libXtst libXrender libXcomposite libXinerama"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

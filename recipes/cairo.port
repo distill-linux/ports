@@ -6,8 +6,7 @@ PORT_URL="https://cairographics.org"
 PORT_COMMIT="1.18.4"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="fontconfig-devel freetype-devel libglib-devel libpng-devel libX11-devel
- libxcb-devel libXext-devel libXrender-devel lzo-devel pixman-devel zlib-devel"
+RUN_DEPS="fontconfig freetype libpng libX11 libxcb libXext libXrender pixman zlib"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

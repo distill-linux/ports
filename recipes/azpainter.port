@@ -6,7 +6,7 @@ PORT_URL="https://azelpg.gitlab.io/azsky2"
 PORT_COMMIT="3.0.12"
 BUILD_SYSTEM="configure"
 BUILD_DEPS="pkg-config ninja"
-RUN_DEPS="fontconfig-devel libXcursor-devel libXi-devel libXrender-devel libjpeg-turbo-devel libpng-devel libwebp-devel tiff-devel zlib-devel freetype-devel"
+RUN_DEPS="fontconfig libXcursor libXi libXrender libjpeg-turbo libpng libwebp zlib freetype"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

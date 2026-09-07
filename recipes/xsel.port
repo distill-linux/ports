@@ -6,7 +6,7 @@ PORT_URL="http://www.kfish.org/software/xsel/"
 PORT_COMMIT="1.2.1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="autoconf automake pkg-config"
-RUN_DEPS="libXt-devel"
+RUN_DEPS="libXt"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

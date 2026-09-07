@@ -6,8 +6,7 @@ PORT_URL="https://wayland.emersion.fr/mako/"
 PORT_COMMIT="1.11.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config scdoc wayland-devel wayland-protocols"
-RUN_DEPS="wayland-devel wayland-protocols pango-devel cairo-devel
- basu-devel gdk-pixbuf-devel"
+RUN_DEPS="wayland pango cairo"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

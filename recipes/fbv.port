@@ -6,7 +6,7 @@ PORT_URL="http://www.eclis.ch/fbv/"
 PORT_COMMIT="1.0b"
 BUILD_SYSTEM="configure"
 BUILD_DEPS=""
-RUN_DEPS="libpng-devel libjpeg-turbo-devel giflib-devel"
+RUN_DEPS="libpng libjpeg-turbo giflib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

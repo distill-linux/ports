@@ -6,8 +6,7 @@ PORT_URL="https://codeberg.org/nsxiv/nsxiv"
 PORT_COMMIT="34"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS=""
-RUN_DEPS="libX11-devel imlib2-devel giflib-devel libexif-devel libXft-devel
- libwebp-devel freetype-devel fontconfig-devel"
+RUN_DEPS="libX11 giflib libXft libwebp freetype fontconfig"
 
 BUILD:
 make CC=clang PREFIX=/usr

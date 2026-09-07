@@ -6,9 +6,7 @@ PORT_URL="https://sr.ht/~exec64/imv/"
 PORT_COMMIT="5.0.1"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="asciidoc pkg-config cmake wayland-devel"
-RUN_DEPS="cmocka-devel pango-devel librsvg-devel libheif-devel libxkbcommon-devel
- glu-devel wayland-devel wayland-protocols inih-devel libnsbmp-devel libwebp-devel
- libnsgif-devel"
+RUN_DEPS="pango libxkbcommon wayland libwebp"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

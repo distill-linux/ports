@@ -6,7 +6,7 @@ PORT_URL="https://st.suckless.org"
 PORT_COMMIT="0.9.3"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="fontconfig-devel libX11-devel libXft-devel"
+RUN_DEPS="fontconfig libX11 libXft"
 
 BUILD:
 make CC=clang PREFIX=/usr

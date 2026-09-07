@@ -6,7 +6,7 @@ PORT_URL="https://www.pango.org/"
 PORT_COMMIT="1.56.3"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="glib-devel pkg-config python3-docutils"
-RUN_DEPS="fribidi-devel harfbuzz-devel libXft-devel libthai-devel"
+RUN_DEPS="fribidi harfbuzz libXft"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

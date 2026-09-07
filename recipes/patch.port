@@ -6,7 +6,7 @@ PORT_URL="http://www.gnu.org/software/patch/patch.html"
 PORT_COMMIT="2.8"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS=""
-RUN_DEPS="attr-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

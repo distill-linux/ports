@@ -6,7 +6,7 @@ PORT_URL="${XORG_SITE}"
 PORT_COMMIT="1.0.13"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="xorgproto libX11-devel libXext-devel"
+RUN_DEPS="libX11 libXext"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

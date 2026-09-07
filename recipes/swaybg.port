@@ -6,7 +6,7 @@ PORT_URL="https://swaywm.org"
 PORT_COMMIT="1.2.2"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config wayland-devel scdoc"
-RUN_DEPS="wayland-protocols cairo-devel gdk-pixbuf-devel wayland-devel"
+RUN_DEPS="cairo wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

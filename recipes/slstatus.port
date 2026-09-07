@@ -6,7 +6,7 @@ PORT_URL="https://tools.suckless.org/slstatus/"
 PORT_COMMIT="20180708"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS=""
-RUN_DEPS="alsa-lib-devel libX11-devel"
+RUN_DEPS="alsa-lib libX11"
 
 BUILD:
 make CC=clang PREFIX=/usr

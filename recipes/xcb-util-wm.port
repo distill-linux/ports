@@ -6,7 +6,7 @@ PORT_URL="https://xcb.freedesktop.org"
 PORT_COMMIT="0.4.2"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="m4 pkg-config"
-RUN_DEPS="libxcb-devel xcb-util-devel"
+RUN_DEPS="libxcb"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

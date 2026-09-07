@@ -6,7 +6,7 @@ PORT_URL="https://www.x.org/"
 PORT_COMMIT="3.5.19"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="gettext pkg-config"
-RUN_DEPS="xorgproto libSM-devel libXext-devel libXt-devel"
+RUN_DEPS="libXext libXt"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

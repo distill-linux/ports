@@ -6,7 +6,7 @@ PORT_URL="https://sr.ht/~kennylevinsen/wlsunset/"
 PORT_COMMIT="0.4.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="scdoc pkg-config wayland-devel"
-RUN_DEPS="pkg-config wayland-devel wayland-protocols"
+RUN_DEPS="wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

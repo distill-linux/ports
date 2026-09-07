@@ -6,7 +6,7 @@ PORT_URL="https://www.xiph.org/vorbis/"
 PORT_COMMIT="1.3.7"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libogg-devel"
+RUN_DEPS="libogg"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

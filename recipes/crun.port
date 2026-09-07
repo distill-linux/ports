@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Fast and lightweight fully compliant OCI container runtime in C"
 PORT_URL="https://github.com/containers/crun.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="libcap libseccomp yajl"
+RUN_DEPS=""
 
 BUILD:
 ./autogen.sh && ./configure --prefix=/usr

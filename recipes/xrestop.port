@@ -6,7 +6,7 @@ PORT_URL="https://www.freedesktop.org/wiki/Software/xrestop/"
 PORT_COMMIT="0.6"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXres-devel ncurses-devel"
+RUN_DEPS="libXres"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

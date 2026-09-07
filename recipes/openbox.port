@@ -6,9 +6,7 @@ PORT_URL="http://www.openbox.org"
 PORT_COMMIT="3.6.1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="automake libtool pkg-config gettext-devel"
-RUN_DEPS="startup-notification-devel libxml2-devel libXrandr-devel
- libXcursor-devel libXinerama-devel libSM-devel imlib2-devel
- pango-devel $(vopt_if svg librsvg-devel)"
+RUN_DEPS="libXrandr libXcursor libXinerama pango"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

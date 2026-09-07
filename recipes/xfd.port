@@ -6,7 +6,7 @@ PORT_URL="https://wiki.freedesktop.org/xorg/"
 PORT_COMMIT="1.1.5"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="gettext pkg-config"
-RUN_DEPS="libXaw-devel freetype-devel libXft-devel libxkbfile-devel"
+RUN_DEPS="libXaw freetype libXft"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

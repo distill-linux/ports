@@ -6,8 +6,7 @@ PORT_URL="https://www.kernel.org/pub/linux/utils/util-linux/"
 PORT_COMMIT="2.41.4"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="gettext pkg-config"
-RUN_DEPS="libcap-ng-devel pam-devel readline-devel zlib-devel
- eudev-libudev-devel sqlite-devel"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

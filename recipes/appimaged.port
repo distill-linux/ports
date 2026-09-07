@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Daemon that monitors the system and integrates AppImages"
 PORT_URL="https://github.com/probonopd/go-appimage.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="fuse cairo glib"
+RUN_DEPS="cairo"
 
 BUILD:
 go build -v -o appimaged ./src/appimaged

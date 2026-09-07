@@ -6,7 +6,7 @@ PORT_URL="https://pwmt.org/projects/zathura-pdf-mupdf/"
 PORT_COMMIT="2026.07.18"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="mupdf-devel zathura-devel glib-devel"
+RUN_DEPS="zathura"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

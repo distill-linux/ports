@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxcb"
 PORT_COMMIT="1.17.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="libtool pkg-config xorg-util-macros xcb-proto"
-RUN_DEPS="libXdmcp-devel libXau-devel"
+RUN_DEPS="libXdmcp libXau"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

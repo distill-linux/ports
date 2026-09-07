@@ -6,7 +6,7 @@ PORT_URL="http://www.fontconfig.org"
 PORT_COMMIT="2.17.1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="gperf pkg-config python3"
-RUN_DEPS="expat-devel freetype-devel"
+RUN_DEPS="freetype"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

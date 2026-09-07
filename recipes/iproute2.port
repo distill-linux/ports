@@ -6,8 +6,7 @@ PORT_URL="https://wiki.linuxfoundation.org/networking/iproute2"
 PORT_COMMIT="7.1.0"
 BUILD_SYSTEM="configure"
 BUILD_DEPS="pkg-config perl flex"
-RUN_DEPS="libfl-devel libmnl-devel db-devel iptables-devel elfutils-devel
- libbpf-devel"
+RUN_DEPS="elfutils"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

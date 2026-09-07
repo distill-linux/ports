@@ -6,8 +6,7 @@ PORT_URL="https://codeberg.org/dnkl/fuzzel"
 PORT_COMMIT="1.14.1"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config scdoc wayland-devel"
-RUN_DEPS="fcft-devel libresvg-devel libpng-devel
- libxkbcommon-devel pixman-devel tllist wayland-devel wayland-protocols"
+RUN_DEPS="libpng libxkbcommon pixman wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

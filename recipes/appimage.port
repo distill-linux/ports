@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="AppImage runtime and desktop integration utility"
 PORT_URL="https://github.com/AppImage/AppImageKit.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="squashfs-tools fuse zlib"
+RUN_DEPS="zlib"
 
 BUILD:
 cmake -B build -S . -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release

@@ -6,9 +6,7 @@ PORT_URL="https://www.libarchive.org/"
 PORT_COMMIT="3.8.9"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="zlib-devel bzip2-devel liblzma-devel
- $(vopt_if acl acl-devel) $(vopt_if expat expat-devel) $(vopt_if zstd libzstd-devel)
- $(vopt_if lzo lzo-devel) $(vopt_if lz4 liblz4-devel) $(vopt_if ssl openssl-devel)"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

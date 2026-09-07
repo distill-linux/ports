@@ -6,7 +6,7 @@ PORT_URL="https://harfbuzz.github.io/"
 PORT_COMMIT="14.3.1"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="glib-devel pkg-config gtk-doc"
-RUN_DEPS="cairo-devel graphite-devel icu-devel libxml2"
+RUN_DEPS="cairo"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

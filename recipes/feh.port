@@ -6,8 +6,7 @@ PORT_URL="https://feh.finalrewind.org"
 PORT_COMMIT="3.12.2"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="giblib-devel libXinerama-devel libXt-devel libcurl-devel
- libexif-devel libjpeg-turbo-devel"
+RUN_DEPS="libXinerama libXt libjpeg-turbo"
 
 BUILD:
 make CC=clang PREFIX=/usr

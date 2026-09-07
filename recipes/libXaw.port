@@ -6,7 +6,7 @@ PORT_URL="http://xorg.freedesktop.org"
 PORT_COMMIT="1.0.16"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXext-devel libXt-devel libXmu-devel libXpm-devel"
+RUN_DEPS="libXext libXt libXmu libXpm"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

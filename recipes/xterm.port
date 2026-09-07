@@ -6,8 +6,7 @@ PORT_URL="https://invisible-island.net/xterm/"
 PORT_COMMIT="411"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXaw-devel libXft-devel libutempter-devel libxkbfile-devel
- ncurses-devel"
+RUN_DEPS="libXaw libXft"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

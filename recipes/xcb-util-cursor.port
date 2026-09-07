@@ -6,7 +6,7 @@ PORT_URL="https://xcb.freedesktop.org"
 PORT_COMMIT="0.1.4"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config gperf m4"
-RUN_DEPS="xcb-util-renderutil-devel xcb-util-image-devel"
+RUN_DEPS="xcb-util-renderutil xcb-util-image"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

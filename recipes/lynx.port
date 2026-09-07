@@ -6,7 +6,7 @@ PORT_URL="http://lynx.invisible-island.net/"
 PORT_COMMIT="2.9.3"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS=""
-RUN_DEPS="zlib-devel bzip2-devel ncurses-devel openssl-devel"
+RUN_DEPS="zlib openssl"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

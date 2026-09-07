@@ -6,7 +6,7 @@ PORT_URL="https://github.com/alacritty/alacritty"
 PORT_COMMIT="0.17.0"
 BUILD_SYSTEM="cargo"
 BUILD_DEPS="pkg-config python3 scdoc"
-RUN_DEPS="freetype-devel fontconfig-devel libxcb-devel libxkbcommon-devel"
+RUN_DEPS="freetype fontconfig libxcb libxkbcommon"
 
 BUILD:
 cargo build --release --locked

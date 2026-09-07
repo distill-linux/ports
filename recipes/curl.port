@@ -6,13 +6,7 @@ PORT_URL="https://curl.se"
 PORT_COMMIT="8.21.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="perl pkg-config mdocml"
-RUN_DEPS="nghttp2-devel zlib-devel
- $(vopt_if gnutls 'gnutls-devel')
- $(vopt_if gssapi 'mit-krb5-devel') $(vopt_if ldap 'libldap-devel')
- $(vopt_if rtmp 'librtmp-devel') $(vopt_if ssh 'libssh2-devel')
- $(vopt_if psl 'libpsl-devel') $(vopt_if idn 'libidn2-devel')
- $(vopt_if ssl 'openssl-devel') $(vopt_if zstd 'libzstd-devel')
- $(vopt_if http3 'nghttp3-devel ngtcp2-devel')"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

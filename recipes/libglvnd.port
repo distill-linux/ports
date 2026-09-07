@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/glvnd/libglvnd"
 PORT_COMMIT="1.7.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXext-devel libX11-devel xorgproto"
+RUN_DEPS="libXext libX11"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

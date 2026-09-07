@@ -6,14 +6,7 @@ PORT_URL="https://pipewire.org/"
 PORT_COMMIT="1.6.7"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="doxygen pkg-config python3-docutils gettext glib-devel"
-RUN_DEPS="$(vopt_if sdl2 SDL2-devel) gst-plugins-base1-devel jack-devel
- sbc-devel v4l-utils-devel libva-devel libbluetooth-devel ncurses-devel
- libfreeaptx-devel libusb-devel fdk-aac-devel libsndfile-devel
- vulkan-loader-devel pulseaudio-devel avahi-libs-devel webrtc-audio-processing-devel
- readline-devel openssl-devel lilv-devel libcanberra-devel dbus-devel
- libmysofa-devel opus-devel $(vopt_if ffado libffado-devel) liblc3-devel
- $(vopt_if selinux libselinux-devel) libcamera-devel libcap-devel libebur128-devel
- fftw-devel spandsp-devel"
+RUN_DEPS="libva vulkan-loader openssl dbus"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

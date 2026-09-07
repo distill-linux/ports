@@ -6,7 +6,7 @@ PORT_URL="https://github.com/anholt/libepoxy"
 PORT_COMMIT="1.5.10"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config xorg-util-macros"
-RUN_DEPS="MesaLib-devel"
+RUN_DEPS=""
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

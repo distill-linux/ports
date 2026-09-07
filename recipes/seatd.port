@@ -6,7 +6,7 @@ PORT_URL="https://sr.ht/~kennylevinsen/seatd/"
 PORT_COMMIT="0.9.3"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config scdoc"
-RUN_DEPS="$(vopt_if elogind elogind-devel)"
+RUN_DEPS=""
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

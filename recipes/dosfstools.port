@@ -6,7 +6,7 @@ PORT_URL="https://github.com/dosfstools/dosfstools"
 PORT_COMMIT="4.2"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="eudev-libudev-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

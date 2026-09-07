@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Powerful x86 and AMD64/Intel64 virtualization software"
 PORT_URL="https://www.virtualbox.org/"
 PORT_ARCH="x86_64"
-RUN_DEPS="libxml2 libpng openssl libvpx libX11 libXt"
+RUN_DEPS="libpng openssl libvpx libX11 libXt"
 
 BUILD:
 ./configure --disable-kmods --disable-docs --prefix=/usr

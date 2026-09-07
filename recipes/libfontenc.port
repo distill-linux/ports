@@ -6,7 +6,7 @@ PORT_URL="https://xorg.freedesktop.org/"
 PORT_COMMIT="1.1.9"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="xorgproto zlib-devel"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

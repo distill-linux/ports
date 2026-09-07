@@ -6,7 +6,7 @@ PORT_URL="https://facebook.github.io/zstd/"
 PORT_COMMIT="1.5.7"
 BUILD_SYSTEM="make"
 BUILD_DEPS=""
-RUN_DEPS="zlib-devel liblzma-devel liblz4-devel"
+RUN_DEPS="zlib"
 
 BUILD:
 make CC=clang PREFIX=/usr

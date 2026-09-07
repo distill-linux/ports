@@ -6,8 +6,7 @@ PORT_URL="http://w1.fi/wpa_supplicant/"
 PORT_COMMIT="2.12"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libnl3-devel openssl-devel $(vopt_if dbus dbus-devel)
- $(vopt_if readline readline-devel)"
+RUN_DEPS="openssl"
 
 BUILD:
 make CC=clang PREFIX=/usr

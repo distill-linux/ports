@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/app/xmag"
 PORT_COMMIT="1.0.8"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libXau-devel libXext-devel libXmu-devel libXaw-devel"
+RUN_DEPS="libXau libXext libXmu libXaw"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

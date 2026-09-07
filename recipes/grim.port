@@ -6,8 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/emersion/grim"
 PORT_COMMIT="1.5.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config wayland-devel scdoc"
-RUN_DEPS="wayland-devel wayland-protocols pixman-devel libjpeg-turbo-devel
- libpng-devel"
+RUN_DEPS="wayland pixman libjpeg-turbo libpng"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

@@ -6,7 +6,7 @@ PORT_URL="http://pixman.org/"
 PORT_COMMIT="0.46.4"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config perl"
-RUN_DEPS="libpng-devel"
+RUN_DEPS="libpng"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

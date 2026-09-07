@@ -6,7 +6,7 @@ PORT_URL="https://hacktivis.me/projects/badwolf"
 PORT_COMMIT="1.4.0"
 BUILD_SYSTEM="configure"
 BUILD_DEPS="pkg-config gettext ninja ed"
-RUN_DEPS="libwebkit2gtk41-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

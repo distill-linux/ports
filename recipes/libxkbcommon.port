@@ -6,8 +6,7 @@ PORT_URL="https://xkbcommon.org/"
 PORT_COMMIT="1.13.2"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config bison wayland-protocols wayland-devel"
-RUN_DEPS="xkeyboard-config libxcb-devel wayland-devel wayland-protocols
- xorgproto libxml2-devel"
+RUN_DEPS="libxcb wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

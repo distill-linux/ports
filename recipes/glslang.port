@@ -6,7 +6,7 @@ PORT_URL="https://github.com/KhronosGroup/glslang"
 PORT_COMMIT="16.3.0"
 BUILD_SYSTEM="cmake"
 BUILD_DEPS="python3 bison gtest-devel"
-RUN_DEPS="SPIRV-Tools-devel"
+RUN_DEPS=""
 
 BUILD:
 cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release

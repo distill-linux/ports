@@ -6,7 +6,7 @@ PORT_URL="https://wayland.freedesktop.org"
 PORT_COMMIT="1.49"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config wayland-devel"
-RUN_DEPS="wayland-devel"
+RUN_DEPS="wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

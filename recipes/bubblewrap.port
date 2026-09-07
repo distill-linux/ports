@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Unprivileged sandboxing tool utilizing Linux user namespaces"
 PORT_URL="https://github.com/containers/bubblewrap.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="libcap libseccomp"
+RUN_DEPS=""
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

@@ -6,7 +6,7 @@ PORT_URL="https://matt.ucc.asn.au/dropbear/dropbear.html"
 PORT_COMMIT="2025.89"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS=""
-RUN_DEPS="zlib-devel libtommath-devel libtomcrypt-devel"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

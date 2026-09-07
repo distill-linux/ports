@@ -7,16 +7,7 @@ PORT_COMMIT="0.15.0"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="cmake pkg-config glib-devel wayland-devel scdoc
  $(vopt_if dbusmenugtk gobject-introspection)"
-RUN_DEPS="libevdev-devel libinput-devel wayland-devel gtkmm-devel spdlog eudev-libudev-devel
- gtk-layer-shell-devel jsoncpp-devel libglib-devel libsigc++-devel fmt-devel chrono-date-devel
- playerctl-devel upower-devel
- $(vopt_if pipewire 'wireplumber-devel pipewire-devel')
- $(vopt_if libnl libnl3-devel)
- $(vopt_if pulseaudio pulseaudio-devel)
- $(vopt_if dbusmenugtk libdbusmenu-gtk3-devel)
- $(vopt_if mpd libmpdclient-devel)
- $(vopt_if sndio sndio-devel)
- $(vopt_if jack jack-devel)"
+RUN_DEPS="wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

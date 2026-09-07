@@ -6,7 +6,7 @@ PORT_URL="https://github.com/astrand/xclip"
 PORT_COMMIT="0.13"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="automake"
-RUN_DEPS="libXmu-devel"
+RUN_DEPS="libXmu"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

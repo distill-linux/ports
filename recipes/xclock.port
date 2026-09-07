@@ -6,7 +6,7 @@ PORT_URL="http://www.x.org/archive/X11R6.8.1/doc/xclock.1.html"
 PORT_COMMIT="1.2.1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config xorg-util-macros"
-RUN_DEPS="libXmu-devel libXaw-devel libxkbfile-devel libXft-devel"
+RUN_DEPS="libXmu libXaw libXft"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

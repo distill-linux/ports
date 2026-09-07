@@ -6,7 +6,7 @@ PORT_URL="https://github.com/rhboot/efibootmgr"
 PORT_COMMIT="18"
 BUILD_SYSTEM="make"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="libefivar-devel popt-devel"
+RUN_DEPS=""
 
 BUILD:
 make CC=clang PREFIX=/usr

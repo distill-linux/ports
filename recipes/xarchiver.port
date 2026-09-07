@@ -6,7 +6,7 @@ PORT_URL="https://github.com/ib/xarchiver"
 PORT_COMMIT="0.5.4.26"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config intltool"
-RUN_DEPS="gtk+3-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

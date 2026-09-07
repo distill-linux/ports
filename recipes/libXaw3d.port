@@ -6,7 +6,7 @@ PORT_URL="https://cgit.freedesktop.org/xorg/lib/libXaw3d"
 PORT_COMMIT="1.6.6"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="automake bison libtool pkg-config"
-RUN_DEPS="libXmu-devel libXpm-devel xorg-util-macros"
+RUN_DEPS="libXmu libXpm"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

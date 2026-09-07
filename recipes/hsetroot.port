@@ -6,7 +6,7 @@ PORT_URL="https://github.com/himdel/hsetroot"
 PORT_COMMIT="1.0.5"
 BUILD_SYSTEM="gnu-makefile"
 BUILD_DEPS="automake libtool pkg-config"
-RUN_DEPS="libX11-devel imlib2-devel libXinerama-devel"
+RUN_DEPS="libX11 libXinerama"
 
 BUILD:
 make CC=clang PREFIX=/usr

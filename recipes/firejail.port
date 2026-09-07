@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="Linux namespaces sandbox program using seccomp-bpf filters"
 PORT_URL="https://github.com/netblue30/firejail.git"
 PORT_ARCH="x86_64"
-RUN_DEPS="libseccomp"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr --sysconfdir=/etc

@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libx11"
 PORT_COMMIT="1.8.13"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config xorg-util-macros xorgproto"
-RUN_DEPS="xorgproto xtrans libxcb-devel"
+RUN_DEPS="libxcb"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

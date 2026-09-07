@@ -4,7 +4,7 @@ PORT_RELEASE="1"
 PORT_DESC="ALSA UCM configuration for the t2bce audio driver on Apple T2 Macs"
 PORT_URL="https://github.com/deqrocks/t2bce"
 PORT_ARCH="all"
-RUN_DEPS="alsa-ucm-conf"
+RUN_DEPS=""
 
 BUILD:
 if [ ! -d "t2bce" ]; then

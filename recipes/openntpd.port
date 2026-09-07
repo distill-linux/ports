@@ -6,7 +6,7 @@ PORT_URL="http://openntpd.org/"
 PORT_COMMIT="7.9p1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="automake libtool"
-RUN_DEPS="libtls-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

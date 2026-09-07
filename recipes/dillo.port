@@ -6,7 +6,7 @@ PORT_URL="https://dillo-browser.github.io/"
 PORT_COMMIT="3.3.0"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="which automake"
-RUN_DEPS="brotli-devel fltk-devel libwebp-devel openssl-devel"
+RUN_DEPS="libwebp openssl"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

@@ -6,9 +6,7 @@ PORT_URL="https://www.openssh.com"
 PORT_COMMIT="10.5p1"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="automake"
-RUN_DEPS="libedit-devel pam-devel zlib-devel
- $(vopt_if gssapi 'mit-krb5-devel') $(vopt_if ldns 'libldns-devel')
- $(vopt_if ssl 'openssl-devel') $(vopt_if fido2 'libfido2-devel')"
+RUN_DEPS="zlib"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

@@ -6,10 +6,7 @@ PORT_URL="https://sw.kovidgoyal.net/kitty/"
 PORT_COMMIT="0.48.2"
 BUILD_SYSTEM="make"
 BUILD_DEPS="go pkg-config python3 wayland-devel wayland-protocols nerd-fonts-symbols-ttf"
-RUN_DEPS="gettext-devel glfw-devel harfbuzz-devel libxkbcommon-devel
- python3-devel wayland-devel wayland-protocols libcanberra-devel
- openssl-devel dbus-devel libXcursor-devel libXrandr-devel libXi-devel
- fontconfig-devel libxcb-devel lcms2-devel xxHash-devel simde"
+RUN_DEPS="harfbuzz libxkbcommon python3 wayland openssl dbus libXcursor libXrandr libXi fontconfig libxcb simde"
 
 BUILD:
 make CC=clang PREFIX=/usr

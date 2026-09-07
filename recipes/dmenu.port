@@ -6,7 +6,7 @@ PORT_URL="https://tools.suckless.org/dmenu/"
 PORT_COMMIT="5.4"
 BUILD_SYSTEM="make"
 BUILD_DEPS=""
-RUN_DEPS="libXinerama-devel libXft-devel freetype-devel"
+RUN_DEPS="libXinerama libXft freetype"
 
 BUILD:
 make CC=clang PREFIX=/usr

@@ -6,7 +6,7 @@ PORT_URL="http://roland65.free.fr/xfe/"
 PORT_COMMIT="2.1.7"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config gettext"
-RUN_DEPS="startup-notification-devel libpng-devel fox-devel xcb-util-devel"
+RUN_DEPS="libpng"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

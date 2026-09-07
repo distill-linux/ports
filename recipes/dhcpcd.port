@@ -6,7 +6,7 @@ PORT_URL="https://roy.marples.name/projects/dhcpcd"
 PORT_COMMIT="10.3.2"
 BUILD_SYSTEM="configure"
 BUILD_DEPS="ntp pkg-config"
-RUN_DEPS="eudev-libudev-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang

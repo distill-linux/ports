@@ -6,7 +6,7 @@ PORT_URL="https://gitlab.freedesktop.org/xorg/lib/libxcursor"
 PORT_COMMIT="1.2.3"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="xorgproto libXfixes-devel libXrender-devel"
+RUN_DEPS="libXfixes libXrender"
 
 BUILD:
 ./configure --prefix=/usr CC=clang

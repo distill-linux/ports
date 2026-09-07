@@ -6,7 +6,7 @@ PORT_URL="http://librsync.sourceforge.net/"
 PORT_COMMIT="2.3.4"
 BUILD_SYSTEM="cmake"
 BUILD_DEPS="perl"
-RUN_DEPS="zlib-devel bzip2-devel popt-devel"
+RUN_DEPS="zlib"
 
 BUILD:
 cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release

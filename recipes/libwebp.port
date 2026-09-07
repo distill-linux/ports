@@ -6,8 +6,7 @@ PORT_URL="https://developers.google.com/speed/webp/"
 PORT_COMMIT="1.6.0"
 BUILD_SYSTEM="cmake"
 BUILD_DEPS="pkg-config"
-RUN_DEPS="giflib-devel libpng-devel libfreeglut-devel
- $(vopt_if tiff tiff-devel)"
+RUN_DEPS="giflib libpng"
 
 BUILD:
 cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release

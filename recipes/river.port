@@ -6,8 +6,7 @@ PORT_URL="https://codeberg.org/river/river"
 PORT_COMMIT="0.3.7"
 BUILD_SYSTEM="zig-build"
 BUILD_DEPS="pkg-config wayland-devel scdoc"
-RUN_DEPS="wlroots0.18-devel libevdev-devel pixman-devel
- wayland-protocols libxkbcommon-devel wayland-devel"
+RUN_DEPS="pixman libxkbcommon wayland"
 
 BUILD:
 make CC=clang PREFIX=/usr

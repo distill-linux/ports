@@ -6,7 +6,7 @@ PORT_URL="https://github.com/atx/wtype"
 PORT_COMMIT="0.4"
 BUILD_SYSTEM="meson"
 BUILD_DEPS="pkg-config wayland-devel"
-RUN_DEPS="libxkbcommon-devel wayland-devel"
+RUN_DEPS="libxkbcommon wayland"
 
 BUILD:
 meson setup build --prefix=/usr --buildtype=release

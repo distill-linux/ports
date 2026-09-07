@@ -6,7 +6,7 @@ PORT_URL="https://github.com/eudev-project/eudev"
 PORT_COMMIT="3.2.14"
 BUILD_SYSTEM="gnu-configure"
 BUILD_DEPS="pkg-config gperf"
-RUN_DEPS="libblkid-devel libkmod-devel"
+RUN_DEPS=""
 
 BUILD:
 ./configure --prefix=/usr CC=clang
