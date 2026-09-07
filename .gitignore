@@ -18,3 +18,4 @@ sumifetch/
 test_installer.exp
 common
 __pycache__/
+nmtui/
