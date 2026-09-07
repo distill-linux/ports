@@ -1,0 +1,17 @@
+PORT_NAME="t2fanrd"
+PORT_VERSION="0.1.0"
+PORT_RELEASE="1"
+PORT_DESC="Supercharged Apple T2 Mac fan control daemon in Rust"
+PORT_URL="https://github.com/GnomedDev/t2fanrd"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="cargo"
+BUILD_DEPS="cargo rust"
+RUN_DEPS=""
+
+BUILD:
+if [ ! -d "t2fanrd" ]; then
+    git clone https://github.com/GnomedDev/t2fanrd.git t2fanrd
+fi
+cd t2fanrd
+cargo build --release
+install -D -m 755 target/release/t2fanrd "$PKG_FAKEROOT/usr/bin/t2fanrd"

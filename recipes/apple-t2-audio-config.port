@@ -1,0 +1,18 @@
+PORT_NAME="apple-t2-audio-config"
+PORT_VERSION="0.4"
+PORT_RELEASE="1"
+PORT_DESC="ALSA UCM configuration for the t2bce audio driver on Apple T2 Macs"
+PORT_URL="https://github.com/deqrocks/t2bce"
+PORT_ARCH="all"
+RUN_DEPS="alsa-ucm-conf"
+
+BUILD:
+if [ ! -d "t2bce" ]; then
+    git clone --depth 1 https://github.com/deqrocks/t2bce.git t2bce
+fi
+
+cd t2bce/t2bce_audio-alsa-ucm-conf
+mkdir -p "$PKG_FAKEROOT/usr/share/alsa"
+for conf in ucm2/AppleT2/*.conf ucm2/conf.d/*/*.conf; do
+    install -D -m 644 "$conf" "$PKG_FAKEROOT/usr/share/alsa/$conf"
+done

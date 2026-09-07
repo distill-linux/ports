@@ -1,0 +1,17 @@
+PORT_NAME="mbpfan"
+PORT_VERSION="2.4.0"
+PORT_RELEASE="1"
+PORT_DESC="Daemon that uses applesmc to set fan speed on MacBook laptops"
+PORT_URL="https://github.com/dgraziotin/mbpfan"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="make"
+BUILD_DEPS="make gcc"
+RUN_DEPS=""
+
+BUILD:
+if [ ! -d "mbpfan" ]; then
+    git clone --depth 1 https://github.com/dgraziotin/mbpfan.git mbpfan
+fi
+cd mbpfan
+make
+make install DESTDIR="$PKG_FAKEROOT"

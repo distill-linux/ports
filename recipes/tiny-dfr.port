@@ -1,0 +1,23 @@
+PORT_NAME="tiny-dfr"
+PORT_VERSION="0.3.7"
+PORT_RELEASE="1"
+PORT_DESC="Dynamic function row daemon for Apple Touch Bar"
+PORT_URL="https://github.com/AsahiLinux/tiny-dfr"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="cargo"
+BUILD_DEPS="cargo rust pkg-config"
+RUN_DEPS="pango libinput gdk-pixbuf librsvg"
+
+BUILD:
+if [ ! -d "tiny-dfr" ]; then
+    git clone https://github.com/AsahiLinux/tiny-dfr.git tiny-dfr
+fi
+cd tiny-dfr
+cargo build --release
+install -D -m 755 target/release/tiny-dfr "$PKG_FAKEROOT/usr/bin/tiny-dfr"
+install -D -m 644 etc/udev/rules.d/99-touchbar-seat.rules "$PKG_FAKEROOT/usr/lib/udev/rules.d/99-touchbar-seat.rules"
+install -D -m 644 etc/udev/rules.d/99-touchbar-tiny-dfr.rules "$PKG_FAKEROOT/usr/lib/udev/rules.d/99-touchbar-tiny-dfr.rules"
+mkdir -p "$PKG_FAKEROOT/etc/tiny-dfr"
+install -D -m 644 share/tiny-dfr/config.toml "$PKG_FAKEROOT/etc/tiny-dfr/config.toml"
+mkdir -p "$PKG_FAKEROOT/usr/share"
+cp -r share/tiny-dfr "$PKG_FAKEROOT/usr/share/tiny-dfr"
