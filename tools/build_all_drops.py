@@ -79,7 +79,8 @@ PORT_RELEASE="{rel}"
 PORT_DESC="{desc}"
 PORT_URL="{url}"
 PORT_ARCH="x86_64"
-PORT_DATE="2026-09-02"
+PORT_DATE="{time.strftime('%Y-%m-%d')}"
+TIMESTAMP="{int(time.time())}"
 RUN_DEPS="{deps}"
 
 FILES:
@@ -166,7 +167,8 @@ PORT_RELEASE="{rel}"
 PORT_DESC="{desc}"
 PORT_URL="{p_url}"
 PORT_ARCH="x86_64"
-PORT_DATE="2026-09-02"
+PORT_DATE="{time.strftime('%Y-%m-%d')}"
+TIMESTAMP="{int(time.time())}"
 RUN_DEPS="{deps}"
 
 FILES:
