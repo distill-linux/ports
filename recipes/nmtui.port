@@ -1,0 +1,17 @@
+PORT_NAME="nmtui"
+PORT_VERSION="1.0.0"
+PORT_RELEASE="1"
+PORT_DESC="NetworkManager TUI clone and terminal network configuration tool"
+PORT_URL="https://github.com/distill-linux/nmtui"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="make"
+BUILD_DEPS=""
+RUN_DEPS="wpa_supplicant"
+
+BUILD:
+if [ ! -d "nmtui" ]; then
+    git clone --depth 1 https://github.com/distill-linux/nmtui.git nmtui
+fi
+cd nmtui
+make all
+make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install
