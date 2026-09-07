@@ -1,0 +1,18 @@
+PORT_NAME="rust"
+PORT_VERSION="1.78.0"
+PORT_RELEASE="1"
+PORT_DESC="The Rust programming language toolchain"
+PORT_URL="https://static.rust-lang.org/dist/rust-1.78.0-x86_64-unknown-linux-musl.tar.gz"
+PORT_COMMIT="1.78.0"
+BUILD_SYSTEM="sh"
+BUILD_DEPS=""
+RUN_DEPS="cargo lld"
+
+BUILD:
+./install.sh --destdir="$PKG_FAKEROOT" --prefix=/usr --components=rustc,rust-std-x86_64-unknown-linux-musl --disable-ldconfig
+find "$PKG_FAKEROOT/usr/bin" -type f -exec strip -s {} + 2>/dev/null || true
+find "$PKG_FAKEROOT/usr/lib" -type f -name "*.so" -exec strip -s {} + 2>/dev/null || true
+rm -f "$PKG_FAKEROOT/usr/lib/rustlib/install.log" "$PKG_FAKEROOT/usr/lib/rustlib/uninstall.sh"
+rm -f "$PKG_FAKEROOT/usr/lib/rustlib/x86_64-unknown-linux-musl/lib/librustc-stable_rt."*.a
+rm -f "$PKG_FAKEROOT/usr/lib/rustlib/x86_64-unknown-linux-musl/bin/rust-lld"
+ln -sf /usr/bin/lld "$PKG_FAKEROOT/usr/lib/rustlib/x86_64-unknown-linux-musl/bin/rust-lld"
