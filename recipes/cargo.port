@@ -1,13 +1,16 @@
 PORT_NAME="cargo"
-PORT_VERSION="1.98.0"
+PORT_VERSION="1.78.0"
 PORT_RELEASE="1"
 PORT_DESC="Rust package manager"
 PORT_URL="https://crates.io/"
-PORT_COMMIT="1.98.0"
-BUILD_SYSTEM="make"
-BUILD_DEPS="cargo-bootstrap rust pkg-config"
-RUN_DEPS="rust libcurl-devel openssl-devel"
+PORT_COMMIT="1.78.0"
+BUILD_SYSTEM="sh"
+BUILD_DEPS=""
+RUN_DEPS="rustup"
 
 BUILD:
-make CC=clang PREFIX=/usr
-make DESTDIR="$PKG_FAKEROOT" PREFIX=/usr install
+./install.sh --destdir="$PKG_FAKEROOT" --prefix=/usr
+strip "$PKG_FAKEROOT/usr/bin/cargo" 2>/dev/null || true
+install -d "$PKG_FAKEROOT/usr/share/bash-completion/completions"
+cp "$PKG_FAKEROOT/usr/etc/bash_completion.d/cargo" "$PKG_FAKEROOT/usr/share/bash-completion/completions/cargo" 2>/dev/null || true
+rm -f "$PKG_FAKEROOT/usr/lib/rustlib/install.log"

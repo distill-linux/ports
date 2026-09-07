@@ -25,7 +25,7 @@ byacc	20260126	0b8ce4228aff92c205de619cb8b5c5fde9ceeafde626199f4bf7a46b2e91ec44	
 ca-certificates	20250419+3.127	ba0d314dcd645e0ab6f951bae17f4afdd197186ee46a24460f52587f1a72dd34	166292	ca-certificates-20250419+3.127.drop	
 cage	0.3.0	86184019e7e0b13236af0fce6561a6606b653fd2abb5b8e11d3692244760bf41	24221	cage-0.3.0.drop	libxkbcommon-devel wlroots0.20-devel
 cairo	1.18.4	882c984be2e517d9c1693a79ee379db1648156e50ed17b3edee021ed020cee00	659276	cairo-1.18.4.drop	fontconfig-devel freetype-devel libglib-devel libpng-devel libX11-devel
-cargo	1.98.0	e78b244bbae4cb5df591f987445094df48715cfe528b4eb10d61f63e97162133	11235090	cargo-1.98.0.drop	rust libcurl-devel openssl-devel
+cargo	1.78.0	5c38ad289101e30918bea4114b3cd5679754f9759a0fd207917b45181d7494d6	10896050	cargo-1.78.0.drop	rustup
 chrony	4.8	a60353cbb95a3ddc48eb55997e18eaf2013827b5e079b3205d0db88e04070366	299696	chrony-4.8.drop	gnutls-devel libcap-devel libedit-devel libseccomp-devel
 clang	21	cec03b6bbe72a6b63bbf7d35df2e0b7b5cdaa9e0160d514fc7ee14ea3168931d	254	clang-21.drop	
 compiler-rt	21	5b35d41b194e912641ea9cf51a8c8701111d3badacb3742be3485d84a6fdb120	265	compiler-rt-21.drop	
@@ -182,6 +182,7 @@ qbe	1.1	c7b87def58657fa2d19a98367c584ac56279002a9950d0b2413fc457fbada92d	113870	
 qemu	11.1.0	d267a8b262d7501798415377ca8780cd7bb6de461439db4ab07f1d26933f7fde	346	qemu-11.1.0.drop	pixman libglib-devel libepoxy zlib libcap-ng libseccomp alsa-lib
 river	0.3.7	04f95d1a782ce3c508223b4ad72e799d8cd439cdc567eed47118c0371de0126e	620901	river-0.3.7.drop	wlroots0.18-devel libevdev-devel pixman-devel
 rustc-bin	1.78.0	6fcff2a20bd91069b45e72107fde1bbe596b51a8045426ac3fbe0365545bf402	396	rustc-bin-1.78.0.drop	
+rustup	1.29.1	edb3a8062745f65869149dcd8fe24bfd727009027b38aa4f431f3b67947a84f2	8192532	rustup-1.29.1.drop	
 rxvt-unicode	9.31	aa619e3a07165df1231c0d5ef32ef95b3c9c0724fbb4bd7687c6faa9c1cd2183	1383967	rxvt-unicode-9.31.drop	xorgproto fontconfig-devel
 samurai	1.3	8a0b2a4006d9c80f96ea973bedad05a04e588a8de51a9de0b94e195b11f12831	27965	samurai-1.2.drop	
 sdorfehs	1.5	1cc85762d308ccd1066b4b2fb92972307b2d824c4563b9ac1eb42b3d872ecb56	369	sdorfehs-1.5.drop	
@@ -189,7 +190,7 @@ seatd	0.9.3	4908f7ab69b2e7e80e7637193543f6ad1594936327f8099f7be9a86ccffaf82a	237
 setxkbmap	1.3.4	912c6bf8ee74ac10e87050f7bd89f99fe010016710a11a3fbaf67215c833d1fc	12479	setxkbmap-1.3.4.drop	libX11-devel libxkbfile-devel libXrandr-devel
 shadow	4.8.1	abf66fe47be44211dec1cc34a4e3e8fdadb55c6a7b2b229995e184c9105d943a	585773	shadow-4.8.1.drop	acl-devel pam-devel
 simde	0.8.2	738cd62cc14212c5fb964c1b303c2c329b8d06beeb6c9dabfd52b276c7ff9de1	704231	simde-0.8.2.drop	
-sink	0.1.0	95c55e47124f8912a124f24d5fa84528fb27f69a055d52c7ce996aaa88c606cf	88670	sink-0.1.0.drop	git curl
+sink	0.1.0	8aafb0725dffc176528fbaea2c65935ae1c8158a1be0a2b6aba87e2771ac93dd	14594	sink-0.1.0.drop	git curl
 slock	1.7	63b178a88f856f7cf3cf4d30f592d917cd0eedd14e4915f5e6503d7d07639897	7156	slock-1.7.drop	libXrandr-devel
 slstatus	20180708	690e242247b31719f6732057146ac455c1e5747fc832163cafd6c55dc1288244	12581	slstatus-20180708.drop	alsa-lib-devel libX11-devel
 slurp	1.5.0	b8f218913fd201301384e720946ead434f6bf60424a817331e36e4e9df0a5704	19112	slurp-1.5.0.drop	wayland-devel wayland-protocols cairo-devel libxkbcommon-devel

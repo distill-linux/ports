@@ -1,0 +1,14 @@
+PORT_NAME="rustup"
+PORT_VERSION="1.29.1"
+PORT_RELEASE="1"
+PORT_DESC="The Rust toolchain installer"
+PORT_URL="https://rustup.rs/"
+PORT_COMMIT="1.29.1"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+install -d "$PKG_FAKEROOT/usr/bin"
+install -m 755 rustup-init "$PKG_FAKEROOT/usr/bin/rustup-init"
+ln -sf rustup-init "$PKG_FAKEROOT/usr/bin/rustup"
