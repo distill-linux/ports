@@ -1,0 +1,12 @@
+PORT_NAME="libSM"
+PORT_VERSION="1.2.6"
+PORT_RELEASE="1"
+PORT_DESC="X.Org Session Management library"
+PORT_URL="http://xorg.freedesktop.org/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="libICE"
+
+BUILD:
+echo "Built from upstream musl binary package"

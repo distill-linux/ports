@@ -1,0 +1,12 @@
+PORT_NAME="libICE"
+PORT_VERSION="1.1.2"
+PORT_RELEASE="1"
+PORT_DESC="X.Org Inter-Client Exchange library"
+PORT_URL="http://xorg.freedesktop.org/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+echo "Built from upstream musl binary package"

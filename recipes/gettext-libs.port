@@ -1,0 +1,12 @@
+PORT_NAME="gettext-libs"
+PORT_VERSION="0.22.5"
+PORT_RELEASE="1"
+PORT_DESC="GNU internationalization library (libintl)"
+PORT_URL="https://www.gnu.org/software/gettext/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+echo "Built from upstream musl binary package"

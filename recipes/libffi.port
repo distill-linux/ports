@@ -1,0 +1,12 @@
+PORT_NAME="libffi"
+PORT_VERSION="3.3"
+PORT_RELEASE="1"
+PORT_DESC="Foreign Function Interface library"
+PORT_URL="http://sourceware.org/libffi"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+echo "Built from upstream musl binary package"

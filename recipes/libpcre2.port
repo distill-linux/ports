@@ -1,0 +1,12 @@
+PORT_NAME="libpcre2"
+PORT_VERSION="10.47"
+PORT_RELEASE="1"
+PORT_DESC="Perl Compatible Regular Expressions 2 - shared libraries"
+PORT_URL="https://www.pcre.org/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+echo "Built from upstream musl binary package"

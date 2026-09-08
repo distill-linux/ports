@@ -1,0 +1,12 @@
+PORT_NAME="librsvg"
+PORT_VERSION="2.59.2"
+PORT_RELEASE="1"
+PORT_DESC="SVG library for GNOME"
+PORT_URL="https://gitlab.gnome.org/GNOME/librsvg"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="cairo glib libdav1d gdk-pixbuf libxml2 pango libgcc libstdc++"
+
+BUILD:
+echo "Built from upstream musl binary package"

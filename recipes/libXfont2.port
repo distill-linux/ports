@@ -1,0 +1,14 @@
+PORT_NAME="libXfont2"
+PORT_VERSION="2.0.7"
+PORT_RELEASE="1"
+PORT_DESC="X font 2 Library"
+PORT_URL="https://xorg.freedesktop.org"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="zlib libfontenc freetype"
+RUN_DEPS="zlib libfontenc freetype"
+
+BUILD:
+./configure --prefix=/usr
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

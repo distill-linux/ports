@@ -6,7 +6,7 @@ PORT_URL="https://github.com/X11Libre/xserver.git"
 PORT_COMMIT="main"
 BUILD_SYSTEM="meson"
 BUILD_DEPS=""
-RUN_DEPS=""
+RUN_DEPS="xorg-server-common libpciaccess nettle gmp libXfont2 libfontenc freetype libtirpc mit-krb5-libs libxcvt xkbcomp libxkbfile xkeyboard-config pixman libdrm libXau libXdmcp libxshmfence eudev brotli libpng bzip2 zlib"
 
 BUILD:
 meson setup build --prefix=/usr -Dxorg=true -Dxephyr=true -Dseatd=true -Dsystemd_logind=false

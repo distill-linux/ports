@@ -1,0 +1,14 @@
+PORT_NAME="nettle"
+PORT_VERSION="3.10.2"
+PORT_RELEASE="1"
+PORT_DESC="Low-level cryptographic library"
+PORT_URL="https://www.lysator.liu.se/~nisse/nettle/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="gmp"
+RUN_DEPS="gmp"
+
+BUILD:
+./configure --prefix=/usr --enable-shared
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

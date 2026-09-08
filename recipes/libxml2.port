@@ -1,0 +1,12 @@
+PORT_NAME="libxml2"
+PORT_VERSION="2.13.8"
+PORT_RELEASE="1"
+PORT_DESC="XML parser and toolkit"
+PORT_URL="https://gitlab.gnome.org/GNOME/libxml2"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="zlib"
+
+BUILD:
+echo "Built from upstream musl binary package"

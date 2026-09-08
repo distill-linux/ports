@@ -1,0 +1,14 @@
+PORT_NAME="mit-krb5-libs"
+PORT_VERSION="1.21.3"
+PORT_RELEASE="1"
+PORT_DESC="MIT Kerberos 5 runtime libraries"
+PORT_URL="https://web.mit.edu/kerberos/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="e2fsprogs"
+RUN_DEPS="e2fsprogs"
+
+BUILD:
+cd src && ./configure --prefix=/usr
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

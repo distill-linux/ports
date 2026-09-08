@@ -1,0 +1,12 @@
+PORT_NAME="glib"
+PORT_VERSION="2.88.0"
+PORT_RELEASE="1"
+PORT_DESC="GNU library of C routines"
+PORT_URL="https://www.gtk.org"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="libffi libmount libpcre2 zlib gettext-libs"
+
+BUILD:
+echo "Built from upstream musl binary package"

@@ -1,0 +1,12 @@
+PORT_NAME="pango-xft"
+PORT_VERSION="1.56.3"
+PORT_RELEASE="1"
+PORT_DESC="Pango X font rendering library"
+PORT_URL="https://www.pango.org/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="pango glib fontconfig libXrender libX11 libXft"
+
+BUILD:
+echo "Built from upstream musl binary package"

@@ -1,0 +1,14 @@
+PORT_NAME="libpciaccess"
+PORT_VERSION="0.19"
+PORT_RELEASE="1"
+PORT_DESC="X11 PCI Access library"
+PORT_URL="https://xorg.freedesktop.org"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="meson"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+meson setup build --prefix=/usr
+samu -C build
+DESTDIR="$PKG_FAKEROOT" samu -C build install

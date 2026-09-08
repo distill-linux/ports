@@ -1,0 +1,12 @@
+PORT_NAME="libharfbuzz"
+PORT_VERSION="14.4.0"
+PORT_RELEASE="1"
+PORT_DESC="OpenType text shaping engine - shared libraries"
+PORT_URL="https://harfbuzz.github.io/"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS="freetype graphite libicu78 libstdc++"
+
+BUILD:
+echo "Built from upstream musl binary package"

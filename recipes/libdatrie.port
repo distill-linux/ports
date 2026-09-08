@@ -1,0 +1,12 @@
+PORT_NAME="libdatrie"
+PORT_VERSION="0.2.14"
+PORT_RELEASE="1"
+PORT_DESC="Double-array trie library"
+PORT_URL="https://linux.thai.net/projects/datrie"
+PORT_ARCH="x86_64"
+BUILD_SYSTEM="custom"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+echo "Built from upstream musl binary package"
