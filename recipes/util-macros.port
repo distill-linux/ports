@@ -1,0 +1,15 @@
+PORT_NAME="util-macros"
+PORT_VERSION="1.20.2"
+PORT_RELEASE="1"
+PORT_DESC="X.Org autotools macros"
+PORT_URL="https://gitlab.freedesktop.org/xorg/util/macros"
+PORT_COMMIT="a9d71e3fd8e6758b70be31c586921bbbcd2a8449"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="autoconf automake"
+RUN_DEPS=""
+
+BUILD:
+./autogen.sh
+./configure --prefix=/usr CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install

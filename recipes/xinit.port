@@ -1,0 +1,18 @@
+PORT_NAME="xinit"
+PORT_VERSION="1.4.4"
+PORT_RELEASE="1"
+PORT_DESC="X Window System initializer (provides startx)"
+PORT_URL="https://gitlab.freedesktop.org/xorg/app/xinit"
+PORT_COMMIT="cfa71d44248562f22f2d92732c5e493e89061569"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="xorgproto libX11 util-macros autoconf automake"
+RUN_DEPS="xlibre-server libX11"
+
+BUILD:
+mkdir -p "$PKG_FAKEROOT/usr/share/aclocal"
+cp -f /tmp/test-root/usr/share/aclocal/xorg-macros.m4 "$PKG_FAKEROOT/usr/share/aclocal/"
+export ACLOCAL_PATH="$PKG_FAKEROOT/usr/share/aclocal:/usr/share/aclocal"
+autoreconf -fiv
+./configure --prefix=/usr --with-xinitrc=/etc/X11/xinit/xinitrc CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
