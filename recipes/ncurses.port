@@ -1,0 +1,19 @@
+PORT_NAME="ncurses"
+PORT_VERSION="6.6"
+PORT_RELEASE="1"
+PORT_DESC="Terminal handling library with terminfo database"
+PORT_URL="https://github.com/ThomasDickey/ncurses-snapshots"
+PORT_COMMIT="v6_6_20260905"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS=""
+RUN_DEPS=""
+
+BUILD:
+./configure --prefix=/usr --with-shared --without-debug --enable-widec --enable-pc-files --with-pkg-config-libdir=/usr/lib/pkgconfig CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
+# Create compatibility symlinks
+for lib in ncurses ncursesw form formw menu menuw panel panelw; do
+    ln -sf lib${lib}w.so "$PKG_FAKEROOT/usr/lib/lib${lib}.so"
+    ln -sf lib${lib}w.a "$PKG_FAKEROOT/usr/lib/lib${lib}.a"
+done

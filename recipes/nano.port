@@ -1,0 +1,15 @@
+PORT_NAME="nano"
+PORT_VERSION="9.2"
+PORT_RELEASE="1"
+PORT_DESC="Small and friendly text editor"
+PORT_URL="https://github.com/madnight/nano"
+PORT_COMMIT="master"
+BUILD_SYSTEM="gnu-configure"
+BUILD_DEPS="ncurses"
+RUN_DEPS="ncurses"
+
+BUILD:
+./autogen.sh
+./configure --prefix=/usr --enable-utf8 --enable-nanorc CC=clang
+make -j$(nproc)
+make DESTDIR="$PKG_FAKEROOT" install
